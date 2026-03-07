@@ -1,0 +1,2 @@
+promptflow==1.8.0
+redis==5.0.1

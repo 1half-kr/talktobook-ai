@@ -1,0 +1,102 @@
+$schema: https://azuremlschemas.azureedge.net/promptflow/latest/Flow.schema.json
+environment:
+  python_requirements_txt: requirements.txt
+inputs:
+  user_info:
+    type: object
+    properties:
+      gender:
+        type: string
+        default: FEMALE
+        description: 사용자의 성별
+        is_chat_input: false
+      occupation:
+        type: string
+        default: 프로그래머
+        description: 사용자의 직업
+        is_chat_input: false
+      age_group:
+        type: string
+        default: 대학교 재학
+        description: 사용자의 연령대
+        is_chat_input: false
+    default: {
+      "gender": "FEMALE",
+      "occupation": "프로그래머",
+      "age_group": "대학교 재학"
+    }
+  autobiography_info:
+    type: object
+    properties:
+      theme:
+        type: string
+        default: 가족
+        description: 자서전 테마
+        is_chat_input: false
+      category:
+        type: string
+        default: 부모
+        description: 자서전 카테고리
+        is_chat_input: false
+      reason:
+        type: string
+        default: 이러이러한 사유로 만들고 싶습니다.
+        description: 자서전 작성 이유
+        is_chat_input: false
+    default: {
+      "theme": "가족",
+      "category": "부모",
+      "reason": "이러이러한 사유로 만들고 싶습니다."
+    }
+  autobiography_id:
+    type: int
+    default: 1
+    description: 자서전 ID
+    is_chat_input: false
+  interviews:
+    type: list
+    items:
+      type: object
+      properties:
+        content:
+          type: string
+          default: 회사에서 맡은 첫 프로젝트는 무엇이었고, 어떤 도전이 있었나요?
+          description: 인터뷰 대화 내용
+          is_chat_input: false
+        conversation_type:
+          type: string
+          default: BOT
+          description: 발화자 유형
+          is_chat_input: false
+    default: [
+      {
+        "content": "회사에서 맡은 첫 프로젝트는 무엇이었고, 어떤 도전이 있었나요?",
+        "conversation_type": "HUMAN"
+      },
+      {
+        "content": "제가 맡은 첫 프로젝트는 온라인 쇼핑몰 구축 프로젝트였습니다. 처음으로 프로젝트를 맡아서 설계부터 개발까지 전반적인 업무를 담당했는데, 기존에 경험이 부족했기 때문에 많은 어려움을 겪었습니다. 특히, 프로젝트 일정이 타이트했기 때문에 개발 과정에서 많은 야근을 했었죠.",
+        "conversation_type": "HUMAN"
+      }
+    ]
+outputs:
+  result:
+    type: string
+    reference: ${generate_autobiography.output}
+nodes:
+- name: generate_autobiography
+  type: llm
+  source:
+    type: code
+    path: generate_autobiography.jinja2
+  inputs:
+    model: gpt-4o
+    temperature: 0.4
+    top_p: 1
+    response_format:
+      type: json_object
+    user_info: ${inputs.user_info}
+    autobiography_info: ${inputs.autobiography_info}
+    autobiography_id: ${inputs.autobiography_id}
+    interviews: ${inputs.interviews}
+  connection: open_ai_connection
+  api: chat

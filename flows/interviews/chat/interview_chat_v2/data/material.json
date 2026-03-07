@@ -1,0 +1,1720 @@
+{
+  "category": [
+    {
+      "order": 1,
+      "name": "부모님",
+      "chunk": [
+        {
+          "order": 1,
+          "name": "기본정보",
+          "material": [
+            { "order": 1, "name": "성함" },
+            { "order": 2, "name": "고향/출생지" },
+            { "order": 3, "name": "자라온 환경/배경" },
+            { "order": 4, "name": "배움의 길(학교·직업훈련·삶에서 배운 것)" },
+            { "order": 5, "name": "생업/주요 활동" },
+            { "order": 6, "name": "종교/신념" },
+            { "order": 7, "name": "상징물/감각적 기억" }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "성격",
+          "material": [
+            { "order": 1, "name": "특징" },
+            { "order": 2, "name": "기억나는 에피소드" },
+            { "order": 3, "name": "대화 스타일" },
+            { "order": 4, "name": "화해하는 방식" }
+          ]
+        },
+        {
+          "order": 3,
+          "name": "일과 삶",
+          "material": [
+            { "order": 1, "name": "걸어오신 길(커리어)" },
+            { "order": 2, "name": "일/활동 형태(직장·자영업·프리랜스·돌봄·학업·쉼·창작 등)" },
+            { "order": 3, "name": "일과 가정의 균형" },
+            { "order": 4, "name": "삶의 우선순위" },
+            { "order": 5, "name": "일을 대하는 의미/태도" }
+          ]
+        },
+        {
+          "order": 4,
+          "name": "나와의 관계",
+          "material": [
+            { "order": 1, "name": "서로 부르는 호칭" },
+            { "order": 2, "name": "기억나는 칭찬/격려" },
+            { "order": 3, "name": "갈등과 화해" },
+            { "order": 4, "name": "잊지 못할 대화" },
+            { "order": 5, "name": "나에게 끼친 영향" },
+            { "order": 6, "name": "시기별 심리적 거리감" }
+          ]
+        },
+        {
+          "order": 5,
+          "name": "부모님 간의 관계",
+          "material": [
+            { "order": 1, "name": "의사결정 주도권" },
+            { "order": 2, "name": "역할 분담" },
+            { "order": 3, "name": "다툼과 화해 모습" }
+          ]
+        },
+        {
+          "order": 6,
+          "name": "철학",
+          "material": [
+            { "order": 1, "name": "좌우명/신념" },
+            { "order": 2, "name": "타인을 대하는 태도" },
+            { "order": 3, "name": "중요하게 지키는 가치" },
+            { "order": 4, "name": "절대 하지 않는 행동" }
+          ]
+        },
+        {
+          "order": 7,
+          "name": "양육 방식",
+          "material": [
+            { "order": 1, "name": "칭찬과 훈육 스타일" },
+            { "order": 2, "name": "엄격함과 자율의 비율" },
+            { "order": 3, "name": "지원을 아끼지 않았던 분야" },
+            { "order": 4, "name": "지원의 기준(돈·시간·정서·자율성 등)" }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "name": "조부모",
+      "chunk": [
+        {
+          "order": 1,
+          "name": "기본정보",
+          "material": [
+            { "order": 1, "name": "성함" },
+            { "order": 2, "name": "고향" },
+            { "order": 3, "name": "자라온 환경/배경" },
+            { "order": 4, "name": "배움의 길(학교·일·삶의 배움)" },
+            { "order": 5, "name": "생업" },
+            { "order": 6, "name": "종교" },
+            { "order": 7, "name": "상징물/감각적 기억(냄새, 소리)" },
+            { "order": 8, "name": "말버릇/습관" },
+            { "order": 9, "name": "성격" }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "나와의 관계",
+          "material": [
+            { "order": 1, "name": "함께한 추억" },
+            { "order": 2, "name": "세대 차이/공통점" },
+            { "order": 3, "name": "내가 받은 영향" },
+            { "order": 4, "name": "심리적 거리감" }
+          ]
+        },
+        {
+          "order": 3,
+          "name": "부모님과의 관계",
+          "material": [
+            { "order": 1, "name": "부모님을 대하던 태도" },
+            { "order": 2, "name": "부모님에게 보였던 기대/걱정/자랑(있다면)" },
+            { "order": 3, "name": "가풍에 미친 영향" }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "name": "형제/자매",
+      "chunk": [
+        {
+          "order": 1,
+          "name": "기본정보",
+          "material": [
+            { "order": 1, "name": "성함" },
+            { "order": 2, "name": "함께 자란 곳/환경(있다면)" },
+            { "order": 3, "name": "배움/일의 흐름" },
+            { "order": 4, "name": "생업/관심사" },
+            { "order": 5, "name": "종교/가치관" },
+            { "order": 6, "name": "성격" },
+            { "order": 7, "name": "떠오르는 이미지/감각적 기억" },
+            { "order": 8, "name": "기억나는 습관/말버릇" }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "나와의 관계",
+          "material": [
+            { "order": 1, "name": "어린 시절 추억" },
+            { "order": 2, "name": "주요 갈등 원인" },
+            { "order": 3, "name": "갈등을 풀어낸 방식" },
+            { "order": 4, "name": "경쟁과 비교 의식" },
+            { "order": 5, "name": "상호 영향" },
+            { "order": 6, "name": "서로에게 기대하는 역할" },
+            { "order": 7, "name": "현재의 거리감" }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "name": "자녀/육아",
+      "chunk": [
+        {
+          "order": 1,
+          "name": "신생아기",
+          "material": [
+            { "order": 1, "name": "처음 만난 순간" },
+            { "order": 2, "name": "수유/수면 루틴" },
+            { "order": 3, "name": "산후 조리/회복" }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "영유아기",
+          "material": [
+            { "order": 1, "name": "기본 생활 습관" },
+            { "order": 2, "name": "안전 사고/에피소드" },
+            { "order": 3, "name": "발달 과정/놀이" }
+          ]
+        },
+        {
+          "order": 3,
+          "name": "기질과 성향",
+          "material": [
+            { "order": 1, "name": "타고난 기질" },
+            { "order": 2, "name": "울음/떼쓰기 진정법" },
+            { "order": 3, "name": "흥미를 보이는 것" },
+            { "order": 4, "name": "호기심/질문하는 방식" }
+          ]
+        },
+        {
+          "order": 4,
+          "name": "훈육",
+          "material": [
+            { "order": 1, "name": "훈육의 원칙" },
+            { "order": 2, "name": "형제/친구 간 갈등 중재" }
+          ]
+        },
+        {
+          "order": 5,
+          "name": "건강",
+          "material": [
+            { "order": 1, "name": "자주 앓았던 병" },
+            { "order": 2, "name": "수면 습관" },
+            { "order": 3, "name": "식습관" }
+          ]
+        },
+        {
+          "order": 6,
+          "name": "배움과 학교",
+          "material": [
+            { "order": 1, "name": "교육관/사교육 선택 기준" },
+            { "order": 2, "name": "학교/기관 적응" },
+            { "order": 3, "name": "선생님과의 관계" },
+            { "order": 4, "name": "교우 관계" },
+            { "order": 5, "name": "학습 태도" },
+            { "order": 6, "name": "재능 발견/취미" },
+            { "order": 7, "name": "디지털/미디어 경험(기기·게임·SNS 등)" }
+          ]
+        },
+        {
+          "order": 7,
+          "name": "가치관 전수",
+          "material": [
+            { "order": 1, "name": "꼭 가르치고 싶은 가치" },
+            { "order": 2, "name": "가족 만의 의식/예절" }
+          ]
+        },
+        {
+          "order": 8,
+          "name": "돌보는 사람의 역할",
+          "material": [
+            { "order": 1, "name": "내가 맡은 돌봄 역할" },
+            { "order": 2, "name": "함께 돌보는 사람들과의 협력/합의(있다면)" }
+          ]
+        },
+        {
+          "order": 9,
+          "name": "양육자의 삶",
+          "material": [
+            { "order": 1, "name": "부모가 되며 변한 것" },
+            { "order": 2, "name": "일과 육아의 병행" },
+            { "order": 3, "name": "나만의 시간 확보" }
+          ]
+        },
+        {
+          "order": 10,
+          "name": "사춘기",
+          "material": [
+            { "order": 1, "name": "독립심과 반항" },
+            { "order": 2, "name": "이성 교제/관심사" },
+            { "order": 3, "name": "시행착오와 실패 경험" }
+          ]
+        },
+        {
+          "order": 11,
+          "name": "위기",
+          "material": [
+            { "order": 1, "name": "자녀와의 갈등" },
+            { "order": 2, "name": "학교 폭력/따돌림 등 위기 대처" }
+          ]
+        },
+        {
+          "order": 12,
+          "name": "부모의 성장",
+          "material": [
+            { "order": 1, "name": "부모로서 바꾼 언어/태도" },
+            { "order": 2, "name": "미안했던 순간" },
+            { "order": 3, "name": "물려주고 싶은 유산" }
+          ]
+        },
+        {
+          "order": 13,
+          "name": "기본정보",
+          "material": [
+            { "order": 1, "name": "이름/별명" },
+            { "order": 2, "name": "태어난/처음 만난 곳" },
+            { "order": 3, "name": "함께 살게 된 과정(출산·입양·위탁·재결합 등)" },
+            { "order": 4, "name": "중요한 정체성/특징(성향·필요 지원·자기표현 등)" }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "name": "친척",
+      "chunk": [
+        {
+          "order": 1,
+          "name": "기본정보",
+          "material": [
+            { "order": 1, "name": "관계/호칭" },
+            { "order": 2, "name": "관계의 배경(혈연·혼인·입양·선택가족 등)" },
+            { "order": 3, "name": "생업/특징" },
+            { "order": 4, "name": "성격/이미지" },
+            { "order": 5, "name": "기억을 부르는 말버릇/습관(있다면)" }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "나와의 관계",
+          "material": [
+            { "order": 1, "name": "명절/모임의 기억" },
+            { "order": 2, "name": "심리적 거리감" },
+            { "order": 3, "name": "교류 빈도" },
+            { "order": 4, "name": "내가 받은 영향" },
+            { "order": 5, "name": "서로 힘들었던/갈등했던 순간과 풀어낸 방법" }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "name": "가족의 역사",
+      "chunk": [
+        {
+          "order": 1,
+          "name": "큰 사건",
+          "material": [
+            { "order": 1, "name": "이민/이주" },
+            { "order": 2, "name": "경제적 성공/위기" },
+            { "order": 3, "name": "가족의 질병/간병" },
+            { "order": 4, "name": "사별/이별" },
+            { "order": 5, "name": "독립/분가" },
+            { "order": 6, "name": "가족 구성의 큰 변화(결혼·동거·이혼·재혼·출산·입양 등)" },
+            { "order": 7, "name": "일/생계의 큰 전환(취업·퇴사·창업·실업·은퇴·돌봄 전환 등)" },
+            { "order": 8, "name": "장례·추모/유산 정리 경험(있다면)" }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "문화/의식",
+          "material": [
+            { "order": 1, "name": "명절 풍경" },
+            { "order": 2, "name": "생일/기념일 축하 방식" },
+            { "order": 3, "name": "제사/추모 방식" },
+            { "order": 4, "name": "사진/기록 관리" },
+            { "order": 5, "name": "가족 유산/기념품(가보) 이야기(있다면)" }
+          ]
+        },
+        {
+          "order": 3,
+          "name": "건강 이력",
+          "material": [
+            { "order": 1, "name": "가족력(유전)" },
+            { "order": 2, "name": "서로를 돌보는 방식" },
+            { "order": 3, "name": "보험/대비책" }
+          ]
+        },
+        {
+          "order": 4,
+          "name": "경제 공동체",
+          "material": [
+            { "order": 1, "name": "가계 규모" },
+            { "order": 2, "name": "큰 지출 의사결정" },
+            { "order": 3, "name": "경제적 지원/부양" },
+            { "order": 4, "name": "일상 지출/가계 운영의 스타일" }
+          ]
+        },
+        {
+          "order": 5,
+          "name": "금기/비밀",
+          "material": [
+            { "order": 1, "name": "우리 집의 금기어" },
+            { "order": 2, "name": "말하지 않는 역사" }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 7,
+      "name": "주거지",
+      "chunk": [
+        {
+          "order": 1,
+          "name": "고향/원적지",
+          "material": [
+            { "order": 1, "name": "동네의 분위기" },
+            { "order": 2, "name": "자주 가던 장소" },
+            { "order": 3, "name": "감각적 기억(냄새/소리)" },
+            { "order": 4, "name": "떠나게 된 계기" },
+            { "order": 5, "name": "다시 찾게 된/돌아오게 된 이유(있다면)" },
+            { "order": 6, "name": "그곳이 지금의 나에게 남긴 가치" }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "이사의 역사",
+          "material": [
+            { "order": 1, "name": "주거 이동 경로" },
+            { "order": 2, "name": "이사 이유" },
+            { "order": 3, "name": "집을 고르는 기준의 변화" },
+            { "order": 4, "name": "집을 옮기는 과정에서 겪은 일(계약·정착·적응)" },
+            { "order": 5, "name": "공간 규모/형태 변화(작아짐·커짐·공유주거 등)" },
+            { "order": 6, "name": "독립/동거의 시작" },
+            { "order": 7, "name": "해외/타지 생활" }
+          ]
+        },
+        {
+          "order": 3,
+          "name": "공간의 기억",
+          "material": [
+            { "order": 1, "name": "이사 날의 에피소드" },
+            { "order": 2, "name": "집의 위기(누수/파손 등)" },
+            { "order": 3, "name": "인테리어/수리 경험" },
+            { "order": 4, "name": "집에서 겪은 인생 사건" },
+            { "order": 5, "name": "동네/공동체 행사 기억(있다면)" },
+            { "order": 6, "name": "재난·사고와 대처 경험(있다면)" }
+          ]
+        },
+        {
+          "order": 4,
+          "name": "주거 환경",
+          "material": [
+            { "order": 1, "name": "청결/정리 상태" },
+            { "order": 2, "name": "주변 인프라/편의시설" },
+            { "order": 3, "name": "교통/이동" },
+            { "order": 4, "name": "치안/안전" },
+            { "order": 5, "name": "동네의 미감(풍경)" },
+            { "order": 6, "name": "생활비/물가 체감" }
+          ]
+        },
+        {
+          "order": 5,
+          "name": "이웃 관계",
+          "material": [
+            { "order": 1, "name": "이웃과의 교류/거리" },
+            { "order": 2, "name": "단골 가게" },
+            { "order": 3, "name": "층간소음/갈등" },
+            { "order": 4, "name": "동네 친구" },
+            { "order": 5, "name": "집에 사람을 초대/초대받은 경험(있다면)" }
+          ]
+        },
+        {
+          "order": 6,
+          "name": "집의 의미",
+          "material": [
+            { "order": 1, "name": "가장 좋아하는 공간" },
+            { "order": 2, "name": "집이 주는 감정(안식처 vs 숙소)" },
+            { "order": 3, "name": "불안하거나 힘들었던 공간/순간(있다면)" },
+            { "order": 4, "name": "계절/시기별 집 루틴" }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 8,
+      "name": "성격",
+      "chunk": [
+        {
+          "order": 1,
+          "name": "이미지",
+          "material": [
+            { "order": 1, "name": "나를 설명하는 단어" },
+            { "order": 2, "name": "별명/주변의 평판" },
+            { "order": 3, "name": "첫인상 vs 현인상" }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "스트레스",
+          "material": [
+            { "order": 1, "name": "평소의 텐션" },
+            { "order": 2, "name": "스트레스 받을 때 반응" },
+            { "order": 3, "name": "몸이 보내는 신호(통증·피로·불면 등)" },
+            { "order": 4, "name": "나만의 스트레스 해소법" },
+            { "order": 5, "name": "회복에 도움 되는 것" },
+            { "order": 6, "name": "트리거(발작 버튼)" }
+          ]
+        },
+        {
+          "order": 3,
+          "name": "에너지",
+          "material": [
+            { "order": 1, "name": "내향/외향(에너지 충전법)" },
+            { "order": 2, "name": "혼자 vs 함께" }
+          ]
+        },
+        {
+          "order": 4,
+          "name": "소통 방식",
+          "material": [
+            { "order": 1, "name": "말투/화법" },
+            { "order": 2, "name": "경청/리액션 스타일" },
+            { "order": 3, "name": "자주 쓰는 말/유행어" },
+            { "order": 4, "name": "텍스트 vs 음성 선호" },
+            { "order": 5, "name": "질문/호기심 표현 습관" }
+          ]
+        },
+        {
+          "order": 5,
+          "name": "갈등 해결",
+          "material": [
+            { "order": 1, "name": "참는 편 vs 표현하는 편" },
+            { "order": 2, "name": "싸웠을 때 화해 루틴" }
+          ]
+        },
+        {
+          "order": 6,
+          "name": "선택과 결정",
+          "material": [
+            { "order": 1, "name": "데이터/이성 vs 직관/감정" },
+            { "order": 2, "name": "결정 속도" },
+            { "order": 3, "name": "도전 지향 vs 안정 지향" },
+            { "order": 4, "name": "완벽주의 성향" },
+            { "order": 5, "name": "감당 가능한 위험/손실의 선(돈·관계·건강 등)" }
+          ]
+        },
+        {
+          "order": 7,
+          "name": "업무/작업 스타일",
+          "material": [
+            { "order": 1, "name": "집중이 잘 되는 환경" },
+            { "order": 2, "name": "미루기 vs 미리하기" },
+            { "order": 3, "name": "기록/메모 습관" },
+            { "order": 4, "name": "협업 vs 단독 작업" }
+          ]
+        },
+        {
+          "order": 8,
+          "name": "감정 표현",
+          "material": [
+            { "order": 1, "name": "기쁨/슬픔/분노 표현법" },
+            { "order": 2, "name": "감정 기록(일기)" },
+            { "order": 3, "name": "힘들 때 도움 요청하는 법" }
+          ]
+        },
+        {
+          "order": 9,
+          "name": "나만의 규율",
+          "material": [
+            { "order": 1, "name": "이것만은 꼭 지킨다" },
+            { "order": 2, "name": "예외를 두는 상황" }
+          ]
+        },
+        {
+          "order": 10,
+          "name": "강점과 약점",
+          "material": [
+            { "order": 1, "name": "자신 있는 점" },
+            { "order": 2, "name": "컴플렉스/보완하고 싶은 점" }
+          ]
+        },
+        {
+          "order": 11,
+          "name": "배움의 태도",
+          "material": [
+            { "order": 1, "name": "선호하는 학습법(독학/강의)" },
+            { "order": 2, "name": "피드백 수용 태도" },
+            { "order": 3, "name": "좋은 멘토/동료의 조건" },
+            { "order": 4, "name": "피드백을 거절/보류할 때 기준" }
+          ]
+        },
+        {
+          "order": 12,
+          "name": "대인 관계",
+          "material": [
+            { "order": 1, "name": "그룹 내 역할(리더/팔로워)" },
+            { "order": 2, "name": "사람을 사귀는 속도/깊이" }
+          ]
+        },
+        {
+          "order": 13,
+          "name": "습관",
+          "material": [
+            { "order": 1, "name": "사소한 버릇" },
+            { "order": 2, "name": "고치고 싶은 습관" },
+            { "order": 3, "name": "유머 코드" }
+          ]
+        },
+        {
+          "order": 14,
+          "name": "변화",
+          "material": [
+            { "order": 1, "name": "성격이 바뀐 계기/사건" },
+            { "order": 2, "name": "과거와 현재의 차이" }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 9,
+      "name": "결혼/동반자",
+      "chunk": [
+        {
+          "order": 1,
+          "name": "시작",
+          "material": [
+            { "order": 1, "name": "결혼/동거를 결심한 이유" },
+            { "order": 2, "name": "선택하며 포기한 것들" }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "의식/절차",
+          "material": [
+            { "order": 1, "name": "상견례/가족 소개" },
+            { "order": 2, "name": "예식/행사 준비 과정" },
+            { "order": 3, "name": "비용과 예산" }
+          ]
+        },
+        {
+          "order": 3,
+          "name": "신혼/초기",
+          "material": [
+            { "order": 1, "name": "신혼집 마련" },
+            { "order": 2, "name": "살림 장만" },
+            { "order": 3, "name": "함께 사는 규칙 만들기" }
+          ]
+        },
+        {
+          "order": 4,
+          "name": "재정 관리",
+          "material": [
+            { "order": 1, "name": "통장 관리(통합/각자)" },
+            { "order": 2, "name": "생활비 분담" },
+            { "order": 3, "name": "큰 지출 의사결정" },
+            { "order": 4, "name": "비상금/보험" }
+          ]
+        },
+        {
+          "order": 5,
+          "name": "역할 분담",
+          "material": [
+            { "order": 1, "name": "가사 노동 분담" },
+            { "order": 2, "name": "각자의 시간 존중" },
+            { "order": 3, "name": "명절/행사 역할" }
+          ]
+        },
+        {
+          "order": 6,
+          "name": "확장 가족",
+          "material": [
+            { "order": 1, "name": "양가/가족과의 거리두기" },
+            { "order": 2, "name": "호칭과 연락 빈도" },
+            { "order": 3, "name": "문화 차이와 갈등" }
+          ]
+        },
+        {
+          "order": 7,
+          "name": "가족 계획",
+          "material": [
+            { "order": 1, "name": "자녀 유무 합의" },
+            { "order": 2, "name": "임신/출산/난임" },
+            { "order": 3, "name": "입양/딩크 고민" }
+          ]
+        },
+        {
+          "order": 8,
+          "name": "위기와 극복",
+          "material": [
+            { "order": 1, "name": "경제적 위기" },
+            { "order": 2, "name": "건강 문제" },
+            { "order": 3, "name": "관계의 권태/갈등" },
+            { "order": 4, "name": "신뢰가 흔들렸던 사건과 회복" },
+            { "order": 5, "name": "잠시 떨어져 지낸 경험(장거리·따로 살기 등)" },
+            { "order": 6, "name": "상담/중재 경험" },
+            { "order": 7, "name": "별거/이혼 고민" }
+          ]
+        },
+        {
+          "order": 9,
+          "name": "문화",
+          "material": [
+            { "order": 1, "name": "식습관/입맛 차이" },
+            { "order": 2, "name": "종교/신념 차이" },
+            { "order": 3, "name": "주말/휴일 보내는 법" },
+            { "order": 4, "name": "함께 정한 생활/언어 규칙(있다면)" }
+          ]
+        },
+        {
+          "order": 10,
+          "name": "기념",
+          "material": [
+            { "order": 1, "name": "결혼기념일" },
+            { "order": 2, "name": "부부/커플만의 전통" }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 10,
+      "name": "파트너(배우자)",
+      "chunk": [
+        {
+          "order": 1,
+          "name": "기본정보",
+          "material": [
+            { "order": 1, "name": "이름/애칭" },
+            { "order": 2, "name": "자라온 곳/배경" },
+            { "order": 3, "name": "배움/일의 길" },
+            { "order": 4, "name": "직업/관심사" },
+            { "order": 5, "name": "성격" },
+            { "order": 6, "name": "종교/가치관" },
+            { "order": 7, "name": "상징하는 것/감각적 기억" },
+            { "order": 8, "name": "말버릇/습관" }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "러브스토리",
+          "material": [
+            { "order": 1, "name": "첫 만남" },
+            { "order": 2, "name": "첫인상" },
+            { "order": 3, "name": "반하게 된 포인트" },
+            { "order": 4, "name": "확신의 순간" }
+          ]
+        },
+        {
+          "order": 3,
+          "name": "가치관",
+          "material": [
+            { "order": 1, "name": "잘 맞는 점" },
+            { "order": 2, "name": "절대 안 맞는 점" },
+            { "order": 3, "name": "서로 타협한 부분" }
+          ]
+        },
+        {
+          "order": 4,
+          "name": "소통",
+          "material": [
+            { "order": 1, "name": "대화 스타일" },
+            { "order": 2, "name": "싸우는 패턴" },
+            { "order": 3, "name": "화해하는 노하우" }
+          ]
+        },
+        {
+          "order": 5,
+          "name": "관계",
+          "material": [
+            { "order": 1, "name": "서로에게 바라는 역할" },
+            { "order": 2, "name": "친밀감의 농도" },
+            { "order": 3, "name": "신뢰의 근거" },
+            { "order": 4, "name": "신뢰가 깊어졌던/흔들렸던 순간" }
+          ]
+        },
+        {
+          "order": 6,
+          "name": "존중과 자율",
+          "material": [
+            { "order": 1, "name": "사생활 존중 범위" },
+            { "order": 2, "name": "연락/공유의 빈도" },
+            { "order": 3, "name": "질투와 불안" },
+            { "order": 4, "name": "이성 친구 허용 범위" }
+          ]
+        },
+        {
+          "order": 7,
+          "name": "경제 관념",
+          "material": [
+            { "order": 1, "name": "돈을 쓰는 스타일" },
+            { "order": 2, "name": "소비 우선순위 차이" }
+          ]
+        },
+        {
+          "order": 8,
+          "name": "일상과 건강",
+          "material": [
+            { "order": 1, "name": "함께/각자 생활 루틴" },
+            { "order": 2, "name": "수면·식사 같은 생활 취향" },
+            { "order": 3, "name": "아플 때 서로 돌본 방식" }
+          ]
+        },
+        {
+          "order": 9,
+          "name": "성장 배경",
+          "material": [
+            { "order": 1, "name": "상대방의 가정 환경" },
+            { "order": 2, "name": "유년/학창 시절 이야기" }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 11,
+      "name": "친구",
+      "chunk": [
+        {
+          "order": 1,
+          "name": "이미지",
+          "material": [
+            { "order": 1, "name": "친구를 설명하는 단어" },
+            { "order": 2, "name": "첫인상 vs 현인상" }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "역사",
+          "material": [
+            { "order": 1, "name": "만난 계기/시기" },
+            { "order": 2, "name": "친해진 결정적 순간" }
+          ]
+        },
+        {
+          "order": 3,
+          "name": "관계의 특징",
+          "material": [
+            { "order": 1, "name": "함께 하는 활동" },
+            { "order": 2, "name": "배울 점" },
+            { "order": 3, "name": "주로 나누는 대화 주제" },
+            { "order": 4, "name": "도움을 주고받은 기억" },
+            { "order": 5, "name": "특별히 기억나는 추억/장면" }
+          ]
+        },
+        {
+          "order": 4,
+          "name": "갈등과 변화",
+          "material": [
+            { "order": 1, "name": "다툼과 화해" },
+            { "order": 2, "name": "소원해지거나 멀어진 시기" },
+            { "order": 3, "name": "관계의 재정의" }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 12,
+      "name": "연인(연애)",
+      "chunk": [
+        {
+          "order": 1,
+          "name": "만남",
+          "material": [
+            { "order": 1, "name": "만난 경위" },
+            { "order": 2, "name": "호감을 느낀 포인트" },
+            { "order": 3, "name": "썸/탐색기 에피소드" },
+            { "order": 4, "name": "관계를 정의해온 방식(고백/합의/자연스러운 흐름)" }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "연애 스타일",
+          "material": [
+            { "order": 1, "name": "연락 빈도/스타일" },
+            { "order": 2, "name": "연락 템포 맞추기" },
+            { "order": 3, "name": "애정 표현 방식" },
+            { "order": 4, "name": "데이트 코스/취향" }
+          ]
+        },
+        {
+          "order": 3,
+          "name": "가치관",
+          "material": [
+            { "order": 1, "name": "중요시하는 가치" },
+            { "order": 2, "name": "종교/정치 등 이견 조율" }
+          ]
+        },
+        {
+          "order": 4,
+          "name": "갈등",
+          "material": [
+            { "order": 1, "name": "주로 싸우는 이유" },
+            { "order": 2, "name": "사과/화해 방식" },
+            { "order": 3, "name": "함께 정한 관계 규칙" },
+            { "order": 4, "name": "금기 행동" }
+          ]
+        },
+        {
+          "order": 5,
+          "name": "친밀감",
+          "material": [
+            { "order": 1, "name": "스킨십/성향" },
+            { "order": 2, "name": "별명/애칭" },
+            { "order": 3, "name": "서로의 약점 공유" }
+          ]
+        },
+        {
+          "order": 6,
+          "name": "신뢰와 불안",
+          "material": [
+            { "order": 1, "name": "이성 문제/사생활" },
+            { "order": 2, "name": "질투/집착" }
+          ]
+        },
+        {
+          "order": 7,
+          "name": "현실적 문제",
+          "material": [
+            { "order": 1, "name": "데이트 비용" },
+            { "order": 2, "name": "시간 관리" },
+            { "order": 3, "name": "물리적 거리" },
+            { "order": 4, "name": "결혼/미래에 대한 생각" }
+          ]
+        },
+        {
+          "order": 8,
+          "name": "함께 성장",
+          "material": [
+            { "order": 1, "name": "함께 해낸 일/배움" },
+            { "order": 2, "name": "역할 분담" }
+          ]
+        },
+        {
+          "order": 9,
+          "name": "안전과 경계",
+          "material": [
+            { "order": 1, "name": "불편/위험 신호를 느낀 순간과 대처" },
+            { "order": 2, "name": "서로의 선과 규칙" }
+          ]
+        },
+        {
+          "order": 10,
+          "name": "주변 관계",
+          "material": [
+            { "order": 1, "name": "친구/가족 소개" },
+            { "order": 2, "name": "지인과의 관계" }
+          ]
+        },
+        {
+          "order": 11,
+          "name": "이별",
+          "material": [
+            { "order": 1, "name": "헤어짐의 이유" },
+            { "order": 2, "name": "이별 극복 방법" },
+            { "order": 3, "name": "재회 경험" }
+          ]
+        },
+        {
+          "order": 12,
+          "name": "추억",
+          "material": [
+            { "order": 1, "name": "기념일/선물" },
+            { "order": 2, "name": "가장 좋았던 여행" },
+            { "order": 3, "name": "상징적인 물건/노래" }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 13,
+      "name": "반려동물",
+      "chunk": [
+        {
+          "order": 1,
+          "name": "만남",
+          "material": [
+            { "order": 1, "name": "종류/품종" },
+            { "order": 2, "name": "이름의 뜻" },
+            { "order": 3, "name": "입양 계기/과정" }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "특성",
+          "material": [
+            { "order": 1, "name": "성격/개성" },
+            { "order": 2, "name": "좋아하는 것/싫어하는 것" },
+            { "order": 3, "name": "특이한 버릇" }
+          ]
+        },
+        {
+          "order": 3,
+          "name": "돌봄",
+          "material": [
+            { "order": 1, "name": "산책/놀이 루틴" },
+            { "order": 2, "name": "식사/알러지/식단 관리" },
+            { "order": 3, "name": "식사/배변 관리" },
+            { "order": 4, "name": "혼자 있는 시간 관리" }
+          ]
+        },
+        {
+          "order": 4,
+          "name": "교감",
+          "material": [
+            { "order": 1, "name": "소통하는 방식(개인기/명령어)" },
+            { "order": 2, "name": "나를 위로해준 순간" }
+          ]
+        },
+        {
+          "order": 5,
+          "name": "건강 관리",
+          "material": [
+            { "order": 1, "name": "주요 질병/병원행" },
+            { "order": 2, "name": "건강 검진/관리법" }
+          ]
+        },
+        {
+          "order": 6,
+          "name": "환경과 비용",
+          "material": [
+            { "order": 1, "name": "함께 사는 공간 구성" },
+            { "order": 2, "name": "양육 비용(사료/병원비)" },
+            { "order": 3, "name": "미용/케어 루틴" },
+            { "order": 4, "name": "이동/여행의 어려움" }
+          ]
+        },
+        {
+          "order": 7,
+          "name": "사회적 시선",
+          "material": [
+            { "order": 1, "name": "펫티켓" },
+            { "order": 2, "name": "사회화 경험(사람·동물·장소 적응)" },
+            { "order": 3, "name": "유기동물/동물권 관심" }
+          ]
+        },
+        {
+          "order": 8,
+          "name": "변화",
+          "material": [
+            { "order": 1, "name": "반려동물로 인한 나의 변화" },
+            { "order": 2, "name": "가족 간의 관계 변화" },
+            { "order": 3, "name": "특별히 기억나는 추억/일상 장면" }
+          ]
+        },
+        {
+          "order": 9,
+          "name": "다둥이",
+          "material": [
+            { "order": 1, "name": "합사 과정" },
+            { "order": 2, "name": "서열/관계" }
+          ]
+        },
+        {
+          "order": 10,
+          "name": "이별과 상실",
+          "material": [
+            { "order": 1, "name": "노화/투병 생활" },
+            { "order": 2, "name": "무지개 다리/장례" },
+            { "order": 3, "name": "펫로스 극복" }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 14,
+      "name": "생애주기",
+      "chunk": [
+        {
+          "order": 1,
+          "name": "유년기(0-12)",
+          "material": [
+            { "order": 1, "name": "가장 오래된 기억" },
+            { "order": 2, "name": "가정 환경/분위기" },
+            { "order": 3, "name": "좋아했던 놀이" },
+            { "order": 4, "name": "부모님의 훈육 방식" }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "청소년기(13-19)",
+          "material": [
+            { "order": 1, "name": "학교 생활" },
+            { "order": 2, "name": "친구 관계/무리" },
+            { "order": 3, "name": "사춘기 반항/일탈" },
+            { "order": 4, "name": "첫사랑/짝사랑" },
+            { "order": 5, "name": "장래희망의 변화" }
+          ]
+        },
+        {
+          "order": 3,
+          "name": "청년기(20대)",
+          "material": [
+            { "order": 1, "name": "독립/대학/군대" },
+            { "order": 2, "name": "해외/타지 경험(있다면)" },
+            { "order": 3, "name": "군복무/대체복무/면제 등 삶의 공백기 경험(있다면)" },
+            { "order": 4, "name": "첫 독립/공유주거 경험" },
+            { "order": 5, "name": "첫 돈벌이/경제적 자립의 기억" },
+            { "order": 6, "name": "정체성 탐색(스타일·관점·커뮤니티 등)" },
+            { "order": 7, "name": "진로 탐색과 방황" },
+            { "order": 8, "name": "가치관의 형성" },
+            { "order": 9, "name": "첫 사회 생활" },
+            { "order": 10, "name": "도전과 실패" }
+          ]
+        },
+        {
+          "order": 4,
+          "name": "정착과 확장(30대)",
+          "material": [
+            { "order": 1, "name": "커리어 구축" },
+            { "order": 2, "name": "결혼/가정 형성" },
+            { "order": 3, "name": "현실적인 고민(돈/집)" },
+            { "order": 4, "name": "인간관계의 재편" }
+          ]
+        },
+        {
+          "order": 5,
+          "name": "중년기(40-50대)",
+          "material": [
+            { "order": 1, "name": "사회적 위치/책임" },
+            { "order": 2, "name": "부모님 부양/자녀 교육" },
+            { "order": 3, "name": "체력/건강 변화" },
+            { "order": 4, "name": "커리어 피벗/재배치" },
+            { "order": 5, "name": "번아웃과 회복" },
+            { "order": 6, "name": "제2의 사춘기(오춘기)" }
+          ]
+        },
+        {
+          "order": 6,
+          "name": "은퇴/전환기(60대+)",
+          "material": [
+            { "order": 1, "name": "은퇴 후의 삶" },
+            { "order": 2, "name": "세컨드 커리어/새 활동" },
+            { "order": 3, "name": "역할의 상실/변화" },
+            { "order": 4, "name": "새로운 취미/봉사" },
+            { "order": 5, "name": "주거 규모/형태 조정(다운사이징 등)" },
+            { "order": 6, "name": "부부 관계의 재정립" },
+            { "order": 7, "name": "공동체 기여" }
+          ]
+        },
+        {
+          "order": 7,
+          "name": "노년기",
+          "material": [
+            { "order": 1, "name": "신체적 노화 수용" },
+            { "order": 2, "name": "의료/돌봄 결정" },
+            { "order": 3, "name": "기록/사진 정리" },
+            { "order": 4, "name": "죽음/이별 준비" },
+            { "order": 5, "name": "남은 생의 목표" },
+            { "order": 6, "name": "지나온 삶 회고" },
+            { "order": 7, "name": "장례/추모 방식에 대한 생각" }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 15,
+      "name": "일과 조직",
+      "chunk": [
+        {
+          "order": 1,
+          "name": "시작",
+          "material": [
+            { "order": 1, "name": "첫 일/프로젝트의 기억" },
+            { "order": 2, "name": "신입 시절의 실수" },
+            { "order": 3, "name": "적응 과정" }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "사람",
+          "material": [
+            { "order": 1, "name": "리더/상사 스타일" },
+            { "order": 2, "name": "동료/협업 파트너" },
+            { "order": 3, "name": "멘토 혹은 롤모델" },
+            { "order": 4, "name": "빌런(힘들게 한 사람)" }
+          ]
+        },
+        {
+          "order": 3,
+          "name": "성취와 실패",
+          "material": [
+            { "order": 1, "name": "가장 뿌듯했던 성과" },
+            { "order": 2, "name": "뼈아픈 실수/실패" },
+            { "order": 3, "name": "일하며 배운 교훈" },
+            { "order": 4, "name": "수상/칭찬/감사 받았던 경험(있다면)" }
+          ]
+        },
+        {
+          "order": 4,
+          "name": "환경",
+          "material": [
+            { "order": 1, "name": "일과 삶의 균형(워라밸)" },
+            { "order": 2, "name": "출퇴근/근무 방식" },
+            { "order": 3, "name": "출장/이동 근무 경험(국내·해외·원격 등)" },
+            { "order": 4, "name": "조직 문화" }
+          ]
+        },
+        {
+          "order": 5,
+          "name": "위기 대처",
+          "material": [
+            { "order": 1, "name": "마감/납기 압박" },
+            { "order": 2, "name": "돌발 상황 해결" },
+            { "order": 3, "name": "번아웃 경험" }
+          ]
+        },
+        {
+          "order": 6,
+          "name": "이동과 변화",
+          "material": [
+            { "order": 1, "name": "이직/전직/창업 계기" },
+            { "order": 2, "name": "퇴사 과정과 이유" },
+            { "order": 3, "name": "경력의 전환점" }
+          ]
+        },
+        {
+          "order": 7,
+          "name": "보상",
+          "material": [
+            { "order": 1, "name": "연봉/수입의 변화" },
+            { "order": 2, "name": "인정받았다고 느낀 순간" }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 16,
+      "name": "진로와 배움",
+      "chunk": [
+        {
+          "order": 1,
+          "name": "탐색",
+          "material": [
+            { "order": 1, "name": "어릴 적 꿈" },
+            { "order": 2, "name": "관심사의 변천사" },
+            { "order": 3, "name": "진로 선택의 계기" }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "전공/기술",
+          "material": [
+            { "order": 1, "name": "전공/분야 선택 이유" },
+            { "order": 2, "name": "학업/수련 과정" },
+            { "order": 3, "name": "적성에 맞았던/안 맞았던 부분" }
+          ]
+        },
+        {
+          "order": 3,
+          "name": "전환(피벗)",
+          "material": [
+            { "order": 1, "name": "진로를 바꾼 결정적 계기" },
+            { "order": 2, "name": "새로운 도전의 과정" },
+            { "order": 3, "name": "가족/주변과의 조율·설득(있다면)" },
+            { "order": 4, "name": "포기한 길에 대한 미련" }
+          ]
+        },
+        {
+          "order": 4,
+          "name": "영향",
+          "material": [
+            { "order": 1, "name": "나를 이끌어준 스승/책/영상" },
+            { "order": 2, "name": "현실적 제약과 타협" }
+          ]
+        },
+        {
+          "order": 5,
+          "name": "경험 쌓기",
+          "material": [
+            { "order": 1, "name": "인턴/아르바이트/대외활동" },
+            { "order": 2, "name": "바닥부터 배운 경험" },
+            { "order": 3, "name": "시행착오(삽질)의 역사" }
+          ]
+        },
+        {
+          "order": 6,
+          "name": "자기 파악",
+          "material": [
+            { "order": 1, "name": "내가 잘하는 일(강점)" },
+            { "order": 2, "name": "내가 못하는 일(약점)" },
+            { "order": 3, "name": "일에서 얻는 에너지원" }
+          ]
+        },
+        {
+          "order": 7,
+          "name": "전문성",
+          "material": [
+            { "order": 1, "name": "나만의 필살기/차별점" },
+            { "order": 2, "name": "꾸준히 갈고 닦는 기술" },
+            { "order": 3, "name": "공식/비공식 성과물(자격증·수상·연구/창작·오픈소스·커뮤니티 기여 등)" }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 17,
+      "name": "문제해결(과정)",
+      "chunk": [
+        {
+          "order": 1,
+          "name": "직면",
+          "material": [
+            { "order": 1, "name": "문제를 인식한 순간" },
+            { "order": 2, "name": "당시의 감정/상황" },
+            { "order": 3, "name": "예상되는 피해 규모" }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "분석",
+          "material": [
+            { "order": 1, "name": "문제의 원인 파악" },
+            { "order": 2, "name": "나의 가설" }
+          ]
+        },
+        {
+          "order": 3,
+          "name": "선택",
+          "material": [
+            { "order": 1, "name": "해결을 위한 여러 대안" },
+            { "order": 2, "name": "선택의 기로와 기준" },
+            { "order": 3, "name": "목표(바라던 것)와 현실 조건" },
+            { "order": 4, "name": "해결 방식의 성향(협력·타협·수용·회피·경쟁 등)" },
+            { "order": 5, "name": "현실과 이상의 타협" }
+          ]
+        },
+        {
+          "order": 4,
+          "name": "실행",
+          "material": [
+            { "order": 1, "name": "구체적인 해결 행동" },
+            { "order": 2, "name": "도움을 준 사람들/자원" },
+            { "order": 3, "name": "역할/책임 분담(혼자·함께)" },
+            { "order": 4, "name": "중간에 방향을 조정한 경험" },
+            { "order": 5, "name": "장애물 극복" }
+          ]
+        },
+        {
+          "order": 5,
+          "name": "결과",
+          "material": [
+            { "order": 1, "name": "최종 결과" },
+            { "order": 2, "name": "예상치 못한 부작용/성과" },
+            { "order": 3, "name": "해결 전후의 변화" }
+          ]
+        },
+        {
+          "order": 6,
+          "name": "회고",
+          "material": [
+            { "order": 1, "name": "배운 점/교훈" },
+            { "order": 2, "name": "다시 돌아간다면" }
+          ]
+        },
+        {
+          "order": 7,
+          "name": "유형",
+          "material": [
+            { "order": 1, "name": "인간관계 갈등" },
+            { "order": 2, "name": "업무/학업 난관" },
+            { "order": 3, "name": "경제적 문제" },
+            { "order": 4, "name": "건강/돌봄 문제" }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 18,
+      "name": "취미",
+      "chunk": [
+        {
+          "order": 1,
+          "name": "입문",
+          "material": [
+            { "order": 1, "name": "시작하게 된 계기" },
+            { "order": 2, "name": "취미의 역사(구력)" },
+            { "order": 3, "name": "취미의 유형(창작·움직임·수집·감상·탐험 등)" }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "환경",
+          "material": [
+            { "order": 1, "name": "주로 즐기는 시간/장소" },
+            { "order": 2, "name": "혼자 vs 동호회/모임" },
+            { "order": 3, "name": "함께하는 사람/커뮤니티(있다면)" }
+          ]
+        },
+        {
+          "order": 3,
+          "name": "성장",
+          "material": [
+            { "order": 1, "name": "배우는 과정" },
+            { "order": 2, "name": "실력 향상의 기쁨" },
+            { "order": 3, "name": "슬럼프와 극복" }
+          ]
+        },
+        {
+          "order": 4,
+          "name": "장비(기어)",
+          "material": [
+            { "order": 1, "name": "도구/장비 욕심" },
+            { "order": 2, "name": "아끼는 아이템" }
+          ]
+        },
+        {
+          "order": 5,
+          "name": "의미",
+          "material": [
+            { "order": 1, "name": "취미가 주는 즐거움/몰입" },
+            { "order": 2, "name": "스트레스 해소" },
+            { "order": 3, "name": "본업과의 연결고리" }
+          ]
+        },
+        {
+          "order": 6,
+          "name": "확장",
+          "material": [
+            { "order": 1, "name": "취미 덕분에 만난 사람" },
+            { "order": 2, "name": "취미가 일이 된 경우(덕업일치)" },
+            { "order": 3, "name": "작품/결과물" },
+            { "order": 4, "name": "남긴 기록/공유(사진·글·영상 등)" },
+            { "order": 5, "name": "실패/미완성 경험과 느낀 점" },
+            { "order": 6, "name": "나눔/판매/기부/전시 같은 확장(있다면)" }
+          ]
+        },
+        {
+          "order": 7,
+          "name": "목표",
+          "material": [
+            { "order": 1, "name": "해보고 싶은 버킷리스트" },
+            { "order": 2, "name": "도달하고 싶은 경지" }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 19,
+      "name": "돈과 경제",
+      "chunk": [
+        {
+          "order": 1,
+          "name": "가치관",
+          "material": [
+            { "order": 1, "name": "돈에 대한 첫 기억" },
+            { "order": 2, "name": "부모님의 경제 관념" },
+            { "order": 3, "name": "나만의 소비 철학" },
+            { "order": 4, "name": "돈보다 중요한 것" }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "수입",
+          "material": [
+            { "order": 1, "name": "처음 번 돈의 기억" },
+            { "order": 2, "name": "수입의 변곡점(상승/하락)" },
+            { "order": 3, "name": "몸값(가치) 인정 경험" },
+            { "order": 4, "name": "부수입/파이프라인" }
+          ]
+        },
+        {
+          "order": 3,
+          "name": "지출",
+          "material": [
+            { "order": 1, "name": "소비 패턴/습관" },
+            { "order": 2, "name": "가계부/기록 관리" },
+            { "order": 3, "name": "가장 아까운 지출" },
+            { "order": 4, "name": "가장 만족스러운 지출(가심비)" }
+          ]
+        },
+        {
+          "order": 4,
+          "name": "관리와 저축",
+          "material": [
+            { "order": 1, "name": "통장 쪼개기/관리 노하우" },
+            { "order": 2, "name": "비상금 마련" },
+            { "order": 3, "name": "저축 목표" }
+          ]
+        },
+        {
+          "order": 5,
+          "name": "부채",
+          "material": [
+            { "order": 1, "name": "대출/빚에 대한 생각" },
+            { "order": 2, "name": "상환 경험/스트레스" }
+          ]
+        },
+        {
+          "order": 6,
+          "name": "투자",
+          "material": [
+            { "order": 1, "name": "투자에 대한 태도(공격/안정)" },
+            { "order": 2, "name": "성공과 실패 경험" },
+            { "order": 3, "name": "부동산/주식 등 관심 분야" }
+          ]
+        },
+        {
+          "order": 7,
+          "name": "주거와 큰 돈",
+          "material": [
+            { "order": 1, "name": "전월세/매매 경험" },
+            { "order": 2, "name": "집을 구할 때의 우선순위" },
+            { "order": 3, "name": "큰 돈이 들어간 경험" }
+          ]
+        },
+        {
+          "order": 8,
+          "name": "안전과 대비",
+          "material": [
+            { "order": 1, "name": "보험/안전망을 마련한 방식" },
+            { "order": 2, "name": "큰 병원비/사고비를 감당했던 경험(있다면)" }
+          ]
+        },
+        {
+          "order": 9,
+          "name": "가족/공동체와 돈",
+          "material": [
+            { "order": 1, "name": "함께 쓰는 돈 규칙(가족·동거인·공동체·선택가족 등)" },
+            { "order": 2, "name": "돌봄/부양/지원 경험(받거나 한)" },
+            { "order": 3, "name": "유산/증여/상속 경험(있다면)" }
+          ]
+        },
+        {
+          "order": 10,
+          "name": "사회와 나눔",
+          "material": [
+            { "order": 1, "name": "세금과 기여" },
+            { "order": 2, "name": "기부/후원 경험" },
+            { "order": 3, "name": "비용 분담 원칙(더치페이 등)" },
+            { "order": 4, "name": "경제 변화(물가·경기·위기)가 내 삶에 준 영향" }
+          ]
+        },
+        {
+          "order": 11,
+          "name": "실수",
+          "material": [
+            { "order": 1, "name": "금전적 손실/사기 경험" },
+            { "order": 2, "name": "돈 때문에 겪은 갈등" }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 20,
+      "name": "가치관",
+      "chunk": [
+        {
+          "order": 1,
+          "name": "핵심 가치",
+          "material": [
+            { "order": 1, "name": "인생의 우선순위" },
+            { "order": 2, "name": "가치관 충돌 시 선택 기준" },
+            { "order": 3, "name": "타협할 수 없는 선(레드라인)" }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "신념",
+          "material": [
+            { "order": 1, "name": "좋아하는 문구/명언" },
+            { "order": 2, "name": "스스로와의 약속" },
+            { "order": 3, "name": "종교적/정치적 신념" }
+          ]
+        },
+        {
+          "order": 3,
+          "name": "인생 설계",
+          "material": [
+            { "order": 1, "name": "에너지/시간을 쓰는 방식" },
+            { "order": 2, "name": "우선순위를 정하는 나만의 프레임" },
+            { "order": 3, "name": "하지 않기로 한 것/줄이기로 한 것" }
+          ]
+        },
+        {
+          "order": 4,
+          "name": "꿈과 바람",
+          "material": [
+            { "order": 1, "name": "어릴 적 꿈의 잔향" },
+            { "order": 2, "name": "지금의 소망/목표" },
+            { "order": 3, "name": "꿈을 미뤘던 이유(현실/감정/환경)" }
+          ]
+        },
+        {
+          "order": 5,
+          "name": "동경",
+          "material": [
+            { "order": 1, "name": "존경하는 인물(롤모델)" },
+            { "order": 2, "name": "닮고 싶은 태도" },
+            { "order": 3, "name": "따라 해본 행동" }
+          ]
+        },
+        {
+          "order": 6,
+          "name": "취향과 미감",
+          "material": [
+            { "order": 1, "name": "아름답다고 느끼는 것" },
+            { "order": 2, "name": "싫어하는 스타일(불호)" },
+            { "order": 3, "name": "나만의 감성(추구미)" }
+          ]
+        },
+        {
+          "order": 7,
+          "name": "인생 태도",
+          "material": [
+            { "order": 1, "name": "성공의 정의" },
+            { "order": 2, "name": "행복의 기준" },
+            { "order": 3, "name": "실패를 대하는 자세" },
+            { "order": 4, "name": "미래에 대한 태도" },
+            { "order": 5, "name": "감당 가능한 위험/손실의 선" }
+          ]
+        },
+        {
+          "order": 8,
+          "name": "관계와 사랑의 기준",
+          "material": [
+            { "order": 1, "name": "신뢰를 쌓는 방식" },
+            { "order": 2, "name": "도움 요청/거절의 기준" },
+            { "order": 3, "name": "관계의 거리와 경계를 정하는 법" }
+          ]
+        },
+        {
+          "order": 9,
+          "name": "일에 대한 생각",
+          "material": [
+            { "order": 1, "name": "일을 하는 이유(생계·의미·돌봄·창작·배움 등)" },
+            { "order": 2, "name": "일의 가치/기준" },
+            { "order": 3, "name": "번아웃과 회복" }
+          ]
+        },
+        {
+          "order": 10,
+          "name": "기술/변화에 대한 태도",
+          "material": [
+            { "order": 1, "name": "새 도구/기술을 받아들이는 방식" },
+            { "order": 2, "name": "디지털/로우테크 중 편한 쪽을 고르는 기준" }
+          ]
+        },
+        {
+          "order": 11,
+          "name": "변화",
+          "material": [
+            { "order": 1, "name": "생각이 바뀐 결정적 사건" },
+            { "order": 2, "name": "과거의 나 vs 현재의 나" }
+          ]
+        },
+        {
+          "order": 12,
+          "name": "사회적 자아",
+          "material": [
+            { "order": 1, "name": "공동체에 대한 책임감" },
+            { "order": 2, "name": "사회 문제에 대한 관심" },
+            { "order": 3, "name": "리더십/팔로워십" }
+          ]
+        },
+        {
+          "order": 13,
+          "name": "죽음과 유산",
+          "material": [
+            { "order": 1, "name": "죽음에 대한 생각" },
+            { "order": 2, "name": "어떤 사람으로 기억되고 싶은지" },
+            { "order": 3, "name": "남기고 싶은 것" }
+          ]
+        }
+      ]
+    },
+    {
+      "order": 21,
+      "name": "일상과 습관",
+      "chunk": [
+        {
+          "order": 1,
+          "name": "루틴",
+          "material": [
+            { "order": 1, "name": "아침 기상 루틴" },
+            { "order": 2, "name": "잠들기 전 의식" },
+            { "order": 3, "name": "주말/휴일의 패턴" },
+            { "order": 4, "name": "계절/명절/기념일 루틴(있다면)" }
+          ]
+        },
+        {
+          "order": 2,
+          "name": "공간 활용",
+          "material": [
+            { "order": 1, "name": "집에서의 주요 동선" },
+            { "order": 2, "name": "집중이 잘 되는 곳" },
+            { "order": 3, "name": "나만의 아지트" }
+          ]
+        },
+        {
+          "order": 3,
+          "name": "식생활",
+          "material": [
+            { "order": 1, "name": "식사 메뉴 선정 기준" },
+            { "order": 2, "name": "자신 있는 요리" },
+            { "order": 3, "name": "건강식/영양제 챙기기" }
+          ]
+        },
+        {
+          "order": 4,
+          "name": "건강/체력",
+          "material": [
+            { "order": 1, "name": "운동 습관" },
+            { "order": 2, "name": "수면/컨디션 관리" },
+            { "order": 3, "name": "피로 신호/회복법" },
+            { "order": 4, "name": "내 몸의 신호 읽기" }
+          ]
+        },
+        {
+          "order": 5,
+          "name": "디지털 라이프",
+          "material": [
+            { "order": 1, "name": "스마트폰 사용 습관" },
+            { "order": 2, "name": "정보 관리/정리 정돈" },
+            { "order": 3, "name": "SNS 활용도" }
+          ]
+        },
+        {
+          "order": 6,
+          "name": "살림",
+          "material": [
+            { "order": 1, "name": "청소/정리 스타일" },
+            { "order": 2, "name": "물건을 버리는 기준(미니멀 vs 맥시멀)" }
+          ]
+        },
+        {
+          "order": 7,
+          "name": "사람과 연결",
+          "material": [
+            { "order": 1, "name": "연락/만남의 주기" },
+            { "order": 2, "name": "갈등을 다루는 방식" },
+            { "order": 3, "name": "관계를 유지하는 나만의 규칙" }
+          ]
+        },
+        {
+          "order": 8,
+          "name": "돌봄",
+          "material": [
+            { "order": 1, "name": "내가 돌보는 존재(아이·반려·가족·친구·나 자신 등)" },
+            { "order": 2, "name": "돌봄이 내 삶에 준 의미" }
+          ]
+        },
+        {
+          "order": 9,
+          "name": "지역사회/커뮤니티",
+          "material": [
+            { "order": 1, "name": "동네/온라인/취향 커뮤니티 활동" },
+            { "order": 2, "name": "자원봉사/모임 경험(있다면)" }
+          ]
+        },
+        {
+          "order": 10,
+          "name": "휴식",
+          "material": [
+            { "order": 1, "name": "진정한 휴식의 정의" },
+            { "order": 2, "name": "나를 위한 작은 사치" },
+            { "order": 3, "name": "경험" }
+          ]
+        }
+      ]
+    }
+  ]
+}

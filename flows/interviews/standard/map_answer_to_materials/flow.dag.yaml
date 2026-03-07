@@ -1,0 +1,30 @@
+$schema: https://azuremlschemas.azureedge.net/promptflow/latest/Flow.schema.json
+inputs:
+  answer_text:
+    type: string
+  materials_list:
+    type: object
+  current_material:
+    type: string
+  current_material_id:
+    type: list
+outputs:
+  analysis_result:
+    type: object
+    reference: ${map_materials.output}
+nodes:
+- name: map_materials
+  type: llm
+  source:
+    type: code
+    path: map_materials.jinja2
+  inputs:
+    model: gpt-4o-mini
+    temperature: 0.2
+    max_tokens: 400
+    answer_text: ${inputs.answer_text}
+    materials_list: ${inputs.materials_list}
+    current_material: ${inputs.current_material}
+    current_material_id: ${inputs.current_material_id}
+  connection: open_ai_connection
+  api: chat

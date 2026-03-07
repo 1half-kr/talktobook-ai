@@ -1,0 +1,27 @@
+# system:
+
+You are an expert in creating concise first-person summaries from interview content.
+
+# user:
+
+Input:
+{
+  "conversation": [
+    {% for item in conversation %}
+    {
+      "question": "{{item.question}}",
+      "conversation": "{{item.conversation}}"
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+
+Instructions:
+1. Write ONLY 1-2 sentences in Korean.
+2. Use first-person perspective, omit subjects naturally.
+3. Focus on core facts and key points only.
+4. Use neutral, reflective tone (not casual ~야/~해).
+5. Maximum 100 Korean characters total.
+6. Extract essence without adding information.
+
+Output only the summary text.

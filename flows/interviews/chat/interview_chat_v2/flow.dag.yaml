@@ -1,0 +1,28 @@
+$schema: https://azuremlschemas.azureedge.net/promptflow/latest/Flow.schema.json
+inputs:
+  sessionId:
+    type: string
+  answer_text:
+    type: string
+  user_id:
+    type: int
+  autobiography_id:
+    type: int
+outputs:
+  next_question:
+    type: object
+    reference: ${engine.output.next_question}
+  last_answer_materials_id:
+    type: object
+    reference: ${engine.output.last_answer_materials_id}
+nodes:
+- name: engine
+  type: python
+  source:
+    type: code
+    path: __init__.py
+  inputs:
+    sessionId: ${inputs.sessionId}
+    answer_text: ${inputs.answer_text}
+    user_id: ${inputs.user_id}
+    autobiography_id: ${inputs.autobiography_id}

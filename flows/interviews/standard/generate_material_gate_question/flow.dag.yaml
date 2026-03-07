@@ -1,0 +1,33 @@
+inputs:
+  material:
+    type: string
+    default: 부모 프로필 name
+  model:
+    type: string
+    default: gpt-4o-mini
+  temperature:
+    type: double
+    default: 0.7
+outputs:
+  question:
+    type: object
+    reference: ${format_output.output}
+nodes:
+- name: generate_gate_question
+  type: llm
+  source:
+    type: code
+    path: prompts/material_gate.jinja2
+  inputs:
+    model: ${inputs.model}
+    temperature: ${inputs.temperature}
+    material: ${inputs.material}
+  connection: open_ai_connection
+  api: chat
+- name: format_output
+  type: python
+  source:
+    type: code
+    path: format_output.py
+  inputs:
+    question_text: ${generate_gate_question.output}

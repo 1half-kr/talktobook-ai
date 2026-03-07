@@ -1,0 +1,42 @@
+$schema: https://azuremlschemas.azureedge.net/promptflow/latest/Flow.schema.json
+environment:
+  python_requirements_txt: requirements.txt
+inputs:
+  conversation:
+    type: list
+    items:
+      type: object
+      properties:
+        question:
+          type: string
+          description: 질문 내용
+        conversation:
+          type: string
+          description: 답변 내용
+    default: [
+      {
+        "question": "자서전을 왜 만들고 싶으신가요?",
+        "conversation": "아이들에게 제 이야기를 남기고 싶어서요."
+      },
+      {
+        "question": "가장 기억에 남는 어린 시절의 장소는 어디인가요?",
+        "conversation": "어릴 적에 살던 시골 집 뒤에 있는 작은 숲이요."
+      }
+    ]
+outputs:
+  summary:
+    type: string
+    reference: ${summarize_interview.output}
+nodes:
+- name: summarize_interview
+  type: llm
+  source:
+    type: code
+    path: summarize_interview.jinja2
+  inputs:
+    model: gpt-4o
+    temperature: 0.3
+    top_p: 1
+    conversation: ${inputs.conversation}
+  connection: open_ai_connection
+  api: chat

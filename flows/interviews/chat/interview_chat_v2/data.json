@@ -1,0 +1,59 @@
+[
+  {
+    "sessionId": "test-session-1",
+    "question": {
+      "id": "q-12345",
+      "material": "설명",
+      "type": "how",
+      "text": "설명에 대해 어떻게 기억하고 계신가요?"
+    },
+    "answer_text": "저는 내성적인 성격이에요. 사람들과 어울리는 것보다는 혼자 있는 시간을 더 좋아하고, 새로운 환경에 적응하는데 시간이 좀 걸리는 편이에요.",
+    "metrics": {
+      "engine_state": {
+        "last_material_id": null,
+        "last_material_streak": 0,
+        "theme_initialized": false
+      }
+    },
+    "question_pool": [],
+    "use_llm_keywords": false
+  },
+  {
+    "sessionId": "test-session-2", 
+    "question": {
+      "id": "q-67890",
+      "material": "name",
+      "type": "who",
+      "text": "name에 대해 누구부터 이야기해볼까요?"
+    },
+    "answer_text": "아버지부터 말씀드릴게요. 아버지는 정말 온화하신 분이셨어요. 화를 내시는 걸 거의 본 적이 없고, 항상 차분하게 말씀하셨죠. 어머니는 좀 더 활발하시고 사교적이셨어요.",
+    "metrics": {
+      "engine_state": {
+        "last_material_id": [1, 1, 1],
+        "last_material_streak": 1,
+        "theme_initialized": true
+      }
+    },
+    "question_pool": [],
+    "use_llm_keywords": false
+  },
+  {
+    "sessionId": "test-session-3",
+    "question": {
+      "id": "q-11111",
+      "material": "첫 직장",
+      "type": "when",
+      "text": "첫 직장은 언제 다니셨나요?"
+    },
+    "answer_text": "2020년에 입사했어요. 첫 직장이라 정말 설레고 떨렸던 기억이 나요. 입사 첫날에는 너무 긴장해서 잠을 못 잤어요. 그런데 동료들이 정말 친절하게 도와주셔서 금금 적응할 수 있었어요.",
+    "metrics": {
+      "engine_state": {
+        "last_material_id": [11, 1, 1],
+        "last_material_streak": 2,
+        "theme_initialized": true
+      }
+    },
+    "question_pool": [],
+    "use_llm_keywords": false
+  }
+]

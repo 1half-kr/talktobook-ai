@@ -1,0 +1,47 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# IDE
+.vscode/
+.idea/
+
+# Git
+.git/
+.gitignore
+
+# Logs (but keep __init__.py)
+*.log
+# !serve/logs/__init__.py
+
+# Environment files
+.env
+.env.*
+!.env.example
+
+# Test files
+test_*.py
+*_test.py
+
+# Documentation
+*.md
+!README.md
+
+# MLFlow
+mlruns/
+
+# Promptflow
+.promptflow/
+.index/
+.pdfs/
+
+# OS files
+.DS_Store

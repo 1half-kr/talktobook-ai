@@ -1,0 +1,53 @@
+inputs:
+  type:
+    type: string
+    default: why
+  material:
+    type: string
+    default: 부모
+  keywords:
+    type: list
+    default:
+    - 어머니
+    - 초등학교
+    - 도시락
+  tone:
+    type: string
+    default: 따뜻하고 존중하는 어조
+  max_len:
+    type: int
+    default: 120
+  model:
+    type: string
+    default: gpt-4o-mini
+  temperature:
+    type: double
+    default: 0.3
+outputs:
+  question:
+    type: object
+    reference: ${guard.output}
+nodes:
+- name: llm
+  type: llm
+  source:
+    type: code
+    path: prompts/generate_interview_questions_v2.jinja2
+  inputs:
+    model: ${inputs.model}
+    temperature: ${inputs.temperature}
+    material: ${inputs.material}
+    qtype: ${inputs.type}
+    keywords: ${inputs.keywords}
+    tone: ${inputs.tone}
+    max_len: ${inputs.max_len}
+  connection: open_ai_connection
+  api: chat
+- name: guard
+  type: python
+  source:
+    type: code
+    path: nodes/03_guard.py
+  inputs:
+    raw_text: ${llm.output}
+    max_len: ${inputs.max_len}

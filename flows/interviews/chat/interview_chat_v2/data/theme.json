@@ -1,0 +1,278 @@
+{
+  "theme": [
+    {
+      "order": 1,
+      "name": "가족사 전반",
+      "category": [
+        {
+          "order": 1,
+          "name": "부모"
+        },
+        {
+          "order": 2,
+          "name": "조부모"
+        },
+        {
+          "order": 3,
+          "name": "형제"
+        },
+        {
+          "order": 4,
+          "name": "자녀/육아"
+        },
+        {
+          "order": 5,
+          "name": "친척"
+        },
+        {
+          "order": 6,
+          "name": "가족 사건"
+        }
+      ]
+    },
+    {
+      "order": 2,
+      "name": "사랑과 결혼",
+      "category": [
+        {
+          "order": 12,
+          "name": "연인"
+        },
+        {
+          "order": 9,
+          "name": "결혼"
+        },
+        {
+          "order": 10,
+          "name": "배우자"
+        }
+      ]
+    },
+    {
+      "order": 3,
+      "name": "돌봄과 양육",
+      "category": [
+        {
+          "order": 4,
+          "name": "자녀/육아"
+        },
+        {
+          "order": 6,
+          "name": "가족 사건"
+        },
+        {
+          "order": 21,
+          "name": "생활"
+        }
+      ]
+    },
+    {
+      "order": 4,
+      "name": "집과 동네의 기억",
+      "category": [
+        {
+          "order": 7,
+          "name": "주거지"
+        },
+        {
+          "order": 21,
+          "name": "생활"
+        }
+      ]
+    },
+    {
+      "order": 5,
+      "name": "나의 성격과 습관",
+      "category": [
+        {
+          "order": 8,
+          "name": "성격"
+        },
+        {
+          "order": 21,
+          "name": "생활"
+        }
+      ]
+    },
+    {
+      "order": 6,
+      "name": "관계망과 우정",
+      "category": [
+        {
+          "order": 11,
+          "name": "친구"
+        },
+        {
+          "order": 12,
+          "name": "연인"
+        },
+        {
+          "order": 15,
+          "name": "직장"
+        }
+      ]
+    },
+    {
+      "order": 7,
+      "name": "커리어 여정",
+      "category": [
+        {
+          "order": 15,
+          "name": "직장"
+        },
+        {
+          "order": 16,
+          "name": "진로"
+        },
+        {
+          "order": 17,
+          "name": "문제해결(과정)"
+        }
+      ]
+    },
+    {
+      "order": 8,
+      "name": "성장의 여정",
+      "category": [
+        {
+          "order": 14,
+          "name": "생애주기"
+        },
+        {
+          "order": 8,
+          "name": "성격"
+        },
+        {
+          "order": 6,
+          "name": "가족 사건"
+        }
+      ]
+    },
+    {
+      "order": 9,
+      "name": "위기·회복·성찰",
+      "category": [
+        {
+          "order": 17,
+          "name": "문제해결(과정)"
+        },
+        {
+          "order": 20,
+          "name": "철학"
+        },
+        {
+          "order": 21,
+          "name": "생활"
+        },
+        {
+          "order": 6,
+          "name": "가족 사건"
+        }
+      ]
+    },
+    {
+      "order": 10,
+      "name": "돈과 선택",
+      "category": [
+        {
+          "order": 19,
+          "name": "금전"
+        },
+        {
+          "order": 7,
+          "name": "주거지"
+        },
+        {
+          "order": 9,
+          "name": "결혼"
+        }
+      ]
+    },
+    {
+      "order": 11,
+      "name": "취미·여가·정체성",
+      "category": [
+        {
+          "order": 18,
+          "name": "취미"
+        },
+        {
+          "order": 21,
+          "name": "생활"
+        },
+        {
+          "order": 8,
+          "name": "성격"
+        }
+      ]
+    },
+    {
+      "order": 12,
+      "name": "반려동물과 함께한 삶",
+      "category": [
+        {
+          "order": 13,
+          "name": "반려동물"
+        },
+        {
+          "order": 21,
+          "name": "생활"
+        }
+      ]
+    },
+    {
+      "order": 13,
+      "name": "가치관과 철학",
+      "category": [
+        {
+          "order": 20,
+          "name": "철학"
+        },
+        {
+          "order": 8,
+          "name": "성격"
+        }
+      ]
+    },
+    {
+      "order": 14,
+      "name": "공동체와 일상",
+      "category": [
+        {
+          "order": 21,
+          "name": "생활"
+        },
+        {
+          "order": 11,
+          "name": "친구"
+        },
+        {
+          "order": 15,
+          "name": "직장"
+        },
+        {
+          "order": 6,
+          "name": "가족 사건"
+        },
+        {
+          "order": 13,
+          "name": "반려동물"
+        }
+      ]
+    },
+    {
+      "order": 15,
+      "name": "부모 이야기 집중",
+      "category": [
+        {
+          "order": 1,
+          "name": "부모"
+        },
+        {
+          "order": 6,
+          "name": "가족 사건"
+        }
+      ]
+    }
+  ]
+}

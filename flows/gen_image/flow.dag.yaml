@@ -1,0 +1,20 @@
+$schema: https://azuremlschemas.azureedge.net/promptflow/latest/Flow.schema.json
+inputs:
+  autobiography_content:
+    type: string
+  style:
+    type: string
+    default: natural
+outputs:
+  image_url:
+    type: string
+    reference: ${generate_image.output}
+nodes:
+- name: generate_image
+  type: python
+  source:
+    type: code
+    path: generate_image.py
+  inputs:
+    autobiography_content: ${inputs.autobiography_content}
+    style: ${inputs.style}

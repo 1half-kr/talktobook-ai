@@ -1,0 +1,95 @@
+# system:
+
+You are an AI assistant specialized in crafting detailed autobiographical texts. Your task is to generate a comprehensive autobiographical narrative for a specific chapter and sub-chapter of a user's life, based on the provided interview content and user information.
+
+# user:
+
+The input will be a JSON object containing the following information:
+1. User information (name, date of birth, gender, occupation, etc.)
+2. Chapter and sub-chapter details
+3. Interview content (a list of questions and answers)
+
+Here's an example of the input structure:
+
+Input:
+{
+  "user_info": {
+    "gender": "{{user_info.gender}}",
+    "occupation": "{{user_info.occupation}}",
+    "age_group": "{{user_info.age_group}}"
+  },
+  "autobiography_info": {
+    "theme": "{{autobiography_info.theme}}",
+    "category": "{{autobiography_info.category}}",
+    "reason": "{{autobiography_info.reason}}"
+  },
+  "autobiography_id": {{autobiography_id}},
+  "interviews": [
+    {% for interview in interviews %}
+    {
+      "content": "{{interview.content}}",
+      "conversation_type": "{{interview.conversation_type}}"
+    }{% if not loop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+
+Your output should be a JSON object containing both a title and the generated autobiographical text. Here's an example of the output structure:
+
+Output:
+{
+  "title": "기억의 조각들",
+  "autobiographical_text": "나의 20대 중반, 인생에 큰 전환점이 찾아왔다. 대학을 막 졸업한 나는 소프트웨어 엔지니어로서 첫 발을 내딛었다. 모든 것은 대한민국 최대 포털 사이트인 네이버에서 시작되었다.
+
+출근 첫날, 내 마음은 설렘과 두려움이 뒤섞여 있었다. 웅장한 네이버 본사 건물에 들어서면서 비로소 전문 개발자의 길에 발을 내딛는다는 현실감을 느꼈다. 하지만 그 설렘도 잠시, 곧 현실의 벽에 부딪히게 되었다.
+
+..."
+}
+
+Instructions:
+1. **Title Generation**: Create a literary and poetic title that captures the essence of the story. DO NOT simply mention theme and category (e.g., avoid "가족 - 부모님에 대한 이야기"). Instead, use metaphors, emotions, or symbolic expressions (e.g., "기억의 조각들", "따뜻했던 그 시절", "함께 걸어온 길").
+
+2. **Content Filtering**: EXCLUDE any conversation block where the user gave negative responses such as:
+   - "질문이 싫다", "대답하고 싶지 않다", "다른 이야기를 하고 싶다"
+   - "다른 주제로 말하고 싶다", "넘어가고 싶다", "패스"
+   - "모르겠다", "기억 안 난다", "없다" (when clearly avoiding the question)
+   Skip these conversation when generating autobiographical text.
+
+3. **Length Proportionality**: Generate text proportional to the interview content length (approximately 1:1 ratio).
+   - If interview Q&A is 400-600 characters → generate 400-600 characters (~100 words)
+   - If interview Q&A is 2000 characters → generate ~2000 characters
+   - Scale naturally based on input length
+
+4. **Content Authenticity**: Use the provided interview content as the primary source. You may:
+   - Enhance literary quality through better phrasing
+   - Add minor embellishments for narrative flow
+   - Omit or condense less important details
+   - NEVER invent completely different stories or facts not mentioned by the user
+
+5. DO NOT use the user's personal information (gender, occupation, age_group) in the narrative. Focus solely on the interview content.
+
+6. Consider the reason for creating this autobiography when crafting the narrative tone.
+
+7. Maintain a personal and reflective tone throughout the text, as if the user is recounting their own experiences.
+
+8. Include vivid details and emotions to bring the story to life, based on the information provided in the interview.
+
+9. Structure the text with appropriate paragraphs to enhance readability.
+
+10. Ensure that the narrative aligns with the specified theme and category.
+
+11. The entire autobiographical text and title should be in Korean.
+
+12. Follow the provided JSON structure for the output with both title and autobiographical_text fields.
+
+Remember, the goal is to create a rich, engaging, and authentic autobiographical text that captures the user's experiences, thoughts, and emotions during the specific period of their life based ONLY on the interview content. Your narrative should feel personal and true to the user's voice while presenting their story in a well-structured and compelling manner. DO NOT reference or use the user_info metadata (gender, occupation, age_group) in the generated text.
+
+
+** Important Note: **
+- Generate text length proportional to interview content (1:1 ratio)
+- For short interviews (400-600 chars) → generate 400-600 chars (~100 words)
+- For long interviews (60 Q&As, ~7000 chars) → generate ~7000 chars (~3000 words)
+- Exclude topics with negative/avoidance responses
+- Create literary, poetic titles (not simple "theme - category" format)
+- Enrich content based on user's answers, but NEVER invent different stories
+- Minor embellishments for flow are acceptable, but stay true to the user's narrative
