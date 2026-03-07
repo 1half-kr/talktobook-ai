@@ -70,15 +70,16 @@ class AutobiographyConsumer:
             # generate_autobiography_fn: 자서전 생성 + cycle 완료 여부(isLast) 판단까지 수행
             result = generate_autobiography_fn(payload)
 
-            from stream import publish_result_to_aggregator, publish_generated_autobiography
-            publish_result_to_aggregator(
-                cycle_id,
-                step,
-                payload.autobiographyId,
-                payload.userId,
-                {"title": result.title, "content": result.content},
-            )
+            from stream import publish_generated_autobiography, publish_cycle_merge
             publish_generated_autobiography(result)
+
+            # 모든 챕터 생성 완료 시 Spring Boot merge consumer로 신호 전송
+            if result.isLast:
+                logger.info(
+                    f"[AUTOBIOGRAPHY_CONSUMER] All chapters done, publishing merge signal - "
+                    f"cycle_id={cycle_id} autobiography_id={payload.autobiographyId}"
+                )
+                publish_cycle_merge(result)
 
             channel.basic_ack(delivery_tag=method.delivery_tag)
             logger.info(

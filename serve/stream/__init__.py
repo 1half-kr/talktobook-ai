@@ -224,3 +224,56 @@ def publish_interview_summary_result(payload: InterviewSummaryResponsePayload):
     except Exception as e:
         logger.error(f"[PUBLISH_SUMMARY] Failed - interview_id={payload.interviewId}: {e}", exc_info=True)
         raise
+
+def publish_cycle_merge(payload: GeneratedAutobiographyPayload):
+    """모든 챕터 생성이 완료(isLast=True)된 경우 Spring Boot merge consumer로 신호를 전송.
+
+    Spring Boot AutobiographyMergeConsumer가 autobiography.trigger.cycle.merge.queue를 구독하며,
+    수신 시 자서전 상태를 FINISH로 변경한다.
+    """
+    try:
+        rabbitmq_host = os.environ.get("RABBITMQ_HOST")
+        rabbitmq_port = int(os.environ.get("RABBITMQ_PORT", 5672))
+        rabbitmq_user = os.environ.get("RABBITMQ_USER")
+        rabbitmq_password = os.environ.get("RABBITMQ_PASSWORD")
+
+        logger.info(
+            f"[PUBLISH_CYCLE_MERGE] Starting - cycle_id={payload.cycleId} "
+            f"autobiography_id={payload.autobiographyId} user_id={payload.userId}"
+        )
+
+        credentials = pika.PlainCredentials(rabbitmq_user, rabbitmq_password)
+        connection = pika.BlockingConnection(
+            pika.ConnectionParameters(
+                host=rabbitmq_host,
+                port=rabbitmq_port,
+                credentials=credentials,
+            )
+        )
+        channel = connection.channel()
+
+        merge_message = {
+            "cycleId": payload.cycleId,
+            "step": payload.step,
+            "autobiographyId": payload.autobiographyId,
+            "userId": payload.userId,
+            "action": "merge",
+            "title": payload.title,
+            "content": payload.content,
+        }
+
+        channel.basic_publish(
+            exchange='',
+            routing_key='autobiography.trigger.cycle.merge.queue',
+            body=json.dumps(merge_message),
+            properties=pika.BasicProperties(
+                content_type="application/json",
+                delivery_mode=2,
+            ),
+        )
+
+        connection.close()
+        logger.info(f"[PUBLISH_CYCLE_MERGE] Success - cycle_id={payload.cycleId}")
+    except Exception as e:
+        logger.error(f"[PUBLISH_CYCLE_MERGE] Failed - cycle_id={payload.cycleId}: {e}", exc_info=True)
+        raise

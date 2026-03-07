@@ -25,6 +25,15 @@ def start_all_consumers():
         except Exception as e:
             logger.error(f"[CONSUMER_MANAGER] Autobiography consumer error: {e}", exc_info=True)
 
+    def start_cycle_init_consumer():
+        try:
+            logger.info("[CONSUMER_MANAGER] Initializing cycle init consumer")
+            from .cycle_init_consumer import CycleInitConsumer
+            consumer = CycleInitConsumer()
+            consumer.start_consuming()
+        except Exception as e:
+            logger.error(f"[CONSUMER_MANAGER] Cycle init consumer error: {e}", exc_info=True)
+
     if not all([
         os.environ.get("RABBITMQ_HOST"),
         os.environ.get("RABBITMQ_USER"),
@@ -49,7 +58,13 @@ def start_all_consumers():
         daemon=True
     )
     
-    threads.extend([interview_summary_thread, autobiography_thread])
+    cycle_init_thread = threading.Thread(
+        target=start_cycle_init_consumer,
+        name="CycleInitConsumer",
+        daemon=True,
+    )
+
+    threads.extend([interview_summary_thread, autobiography_thread, cycle_init_thread])
     
     for thread in threads:
         thread.start()
