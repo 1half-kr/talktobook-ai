@@ -78,9 +78,29 @@ class GeneratedAutobiographyPayload(BaseModel):
     userId: int
     title: str
     content: str
-    
+    isLast: bool = False
+
 # interview에 대한 요약 응답 payload 정의
 class InterviewSummaryResponsePayload(BaseModel):
     interviewId: int
     userId: int
     summary: str
+
+# interview summary request dto 정의
+class ConversationDto(BaseModel):
+    question: str = Field(description="질문 내용")
+    conversation: str = Field(description="답변 내용")
+
+
+class InterviewSummaryRequestDto(BaseModel):
+    interviewId: int = Field(description="인터뷰 ID")
+    userId: int = Field(description="사용자 ID")
+    conversations: List[ConversationDto] = Field(description="인터뷰 대화 내역")
+
+
+# cycle 초기화 메시지 정의
+class CycleInitMessage(BaseModel):
+    cycleId: str
+    expectedCount: int
+    autobiographyId: int
+    userId: int

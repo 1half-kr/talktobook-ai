@@ -104,3 +104,50 @@ class SessionManager:
             logger.info(f"[SESSION] Deleted session session_key={session_key}")
         except Exception as e:
             logger.error(f"[REDIS] Failed to delete session session_key={session_key}: {e}")
+
+    # ──────────────────────────────────────────────
+    # Cycle 관리 (자서전 챕터 일괄 생성 완료 여부 추적)
+    # ──────────────────────────────────────────────
+
+    def init_cycle(self, cycle_id: str, expected_count: int, autobiography_id: int, user_id: int):
+        """사이클 초기화 및 Redis 저장.
+        cycleId 별로 예상 챕터 수(expectedCount)와 현재까지 완료된 수(completedCount)를 관리한다.
+        """
+        cycle_data = {
+            "expectedCount": expected_count,
+            "completedCount": 0,
+            "autobiographyId": autobiography_id,
+            "userId": user_id,
+        }
+        try:
+            self.redis_client.set(f"cycle:{cycle_id}", json.dumps(cycle_data))
+            logger.info(
+                f"[CYCLE] Initialized cycle_id={cycle_id} "
+                f"expected={expected_count} autobiography_id={autobiography_id}"
+            )
+        except Exception as e:
+            logger.error(f"[CYCLE] Failed to init cycle_id={cycle_id}: {e}")
+            raise
+
+    def increment_and_check_cycle(self, cycle_id: str) -> bool:
+        """사이클 완료 카운트를 1 증가시키고, 모든 챕터가 완료되었으면 True 반환.
+        cycle 정보가 Redis에 없으면 False를 반환한다.
+        """
+        key = f"cycle:{cycle_id}"
+        try:
+            data = self.redis_client.get(key)
+            if not data:
+                logger.warning(f"[CYCLE] Cycle not found cycle_id={cycle_id}")
+                return False
+            cycle = json.loads(data)
+            cycle["completedCount"] += 1
+            self.redis_client.set(key, json.dumps(cycle))
+            is_last = cycle["completedCount"] >= cycle["expectedCount"]
+            logger.info(
+                f"[CYCLE] Progress cycle_id={cycle_id} "
+                f"completed={cycle['completedCount']} expected={cycle['expectedCount']} is_last={is_last}"
+            )
+            return is_last
+        except Exception as e:
+            logger.error(f"[CYCLE] Failed to increment cycle_id={cycle_id}: {e}")
+            return False
