@@ -38,7 +38,7 @@ jobs:
 
       - name: Upload Docker Compose to S3
         run: |
-          aws s3 cp docker-compose.prod.yml s3://talktobook-deploy/
+          aws s3 cp deploy/docker-compose.prod.yml s3://talktobook-deploy/
 
       - name: Deploy to EC2 via SSM
         run: |
