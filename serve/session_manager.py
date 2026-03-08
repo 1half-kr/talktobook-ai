@@ -109,18 +109,24 @@ class SessionManager:
     # Cycle 관리 (자서전 챕터 일괄 생성 완료 여부 추적)
     # ──────────────────────────────────────────────
 
+    _CYCLE_TTL = 3600  # 1시간
+
     def init_cycle(self, cycle_id: str, expected_count: int, autobiography_id: int, user_id: int):
         """사이클 초기화 및 Redis 저장.
-        cycleId 별로 예상 챕터 수(expectedCount)와 현재까지 완료된 수(completedCount)를 관리한다.
+
+        메타데이터(expected_count, autobiography_id, user_id)와 완료 카운터를
+        별도 키로 분리하여 저장한다. 카운터는 원자적 INCR로만 조작한다.
         """
-        cycle_data = {
+        meta_key = f"cycle:{cycle_id}:meta"
+        done_key = f"cycle:{cycle_id}:done_count"
+        cycle_meta = {
             "expectedCount": expected_count,
-            "completedCount": 0,
             "autobiographyId": autobiography_id,
             "userId": user_id,
         }
         try:
-            self.redis_client.set(f"cycle:{cycle_id}", json.dumps(cycle_data))
+            self.redis_client.setex(meta_key, self._CYCLE_TTL, json.dumps(cycle_meta))
+            self.redis_client.setex(done_key, self._CYCLE_TTL, 0)
             logger.info(
                 f"[CYCLE] Initialized cycle_id={cycle_id} "
                 f"expected={expected_count} autobiography_id={autobiography_id}"
@@ -130,22 +136,27 @@ class SessionManager:
             raise
 
     def increment_and_check_cycle(self, cycle_id: str) -> bool:
-        """사이클 완료 카운트를 1 증가시키고, 모든 챕터가 완료되었으면 True 반환.
+        """완료 카운트를 원자적으로 1 증가시키고, 모든 챕터가 완료되었으면 True 반환.
+
+        Redis INCR은 원자적이므로 병렬 처리 시에도 카운트가 정확하게 유지된다.
         cycle 정보가 Redis에 없으면 False를 반환한다.
         """
-        key = f"cycle:{cycle_id}"
+        meta_key = f"cycle:{cycle_id}:meta"
+        done_key = f"cycle:{cycle_id}:done_count"
         try:
-            data = self.redis_client.get(key)
-            if not data:
+            meta_raw = self.redis_client.get(meta_key)
+            if not meta_raw:
                 logger.warning(f"[CYCLE] Cycle not found cycle_id={cycle_id}")
                 return False
-            cycle = json.loads(data)
-            cycle["completedCount"] += 1
-            self.redis_client.set(key, json.dumps(cycle))
-            is_last = cycle["completedCount"] >= cycle["expectedCount"]
+
+            expected_count = json.loads(meta_raw)["expectedCount"]
+            done_count = self.redis_client.incr(done_key)
+            self.redis_client.expire(done_key, self._CYCLE_TTL)
+
+            is_last = done_count >= expected_count
             logger.info(
                 f"[CYCLE] Progress cycle_id={cycle_id} "
-                f"completed={cycle['completedCount']} expected={cycle['expectedCount']} is_last={is_last}"
+                f"completed={done_count} expected={expected_count} is_last={is_last}"
             )
             return is_last
         except Exception as e:

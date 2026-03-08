@@ -1,0 +1,87 @@
+name: Deploy AI
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'ai/**'
+      - 'deploy/ai/docker-compose.ai.prod.yml'
+      - '.github/workflows/deploy-ai.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'ai/**'
+      - 'deploy/ai/docker-compose.ai.prod.yml'
+      - '.github/workflows/deploy-ai.yml'
+  workflow_dispatch:
+
+env:
+  AWS_REGION: ap-northeast-2
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build and push Docker image
+        run: |
+          docker build -f ai/deploy/Dockerfile -t ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY_AI }}:${{ github.sha }} .
+          docker push ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY_AI }}:${{ github.sha }}
+
+      - name: Upload Docker Compose to S3
+        run: |
+          aws s3 cp deploy/ai/docker-compose.ai.prod.yml s3://talktobook-deploy/
+          aws s3 cp deploy/ai/promtail-config.yml s3://talktobook-deploy/ai-promtail-config.yml
+
+      - name: Deploy to EC2 via SSM
+        run: |
+          aws ssm send-command \
+            --document-name "AWS-RunShellScript" \
+            --parameters 'commands=[
+              "cd /opt/deploy",
+              "aws s3 cp s3://talktobook-deploy/docker-compose.ai.prod.yml .",
+              "aws s3 cp s3://talktobook-deploy/ai-promtail-config.yml ./promtail-config.yml",
+              "aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin ${{ secrets.ECR_REGISTRY }}",
+              "cat > .env << EOF",
+              "ECR_REGISTRY=${{ secrets.ECR_REGISTRY }}",
+              "ECR_REPOSITORY_AI=${{ secrets.ECR_REPOSITORY_AI }}",
+              "IMAGE_TAG=${{ github.sha }}",
+              "REDIS_HOST=${{ secrets.REDIS_HOST }}",
+              "REDIS_PORT=${{ secrets.REDIS_PORT }}",
+              "WEB_URL=${{ secrets.WEB_URL }}",
+              "DEBUG=True",
+              "LOG_LEVEL=DEBUG",
+              "AZURE_OPENAI_API_KEY=${{ secrets.AZURE_OPENAI_API_KEY }}",
+              "LIFE_BOOKSHELF_AI_JWT_SECRET_KEY=${{ secrets.LIFE_BOOKSHELF_AI_JWT_SECRET_KEY }}",
+              "RABBITMQ_HOST=${{ secrets.RABBITMQ_HOST }}",
+              "RABBITMQ_PORT=${{ secrets.RABBITMQ_PORT }}",
+              "RABBITMQ_USER=${{ secrets.RABBITMQ_DEFAULT_USER }}",
+              "RABBITMQ_PASSWORD=${{ secrets.RABBITMQ_DEFAULT_PASS }}",
+              "EOF",
+              "cat > .env.promtail << EOF",
+              "LOKI_URL=${{ secrets.LOKI_URL }}",
+              "PROMTAIL_PORT=9080",
+              "EOF",
+              "docker-compose -f docker-compose.ai.prod.yml pull",
+              "docker-compose -f docker-compose.ai.prod.yml down",
+              "docker-compose -f docker-compose.ai.prod.yml up -d",
+              "docker image prune -f"
+            ]' \
+            --instance-ids ${{ secrets.AI_INSTANCE_ID }} \
+            --region ${{ env.AWS_REGION }}

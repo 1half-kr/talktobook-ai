@@ -1,0 +1,26 @@
+services:
+  ai-main:
+    image: "${ECR_REGISTRY}/${ECR_REPOSITORY_AI}:${IMAGE_TAG}"
+    restart: always
+    container_name: "talktobook-ai"
+    ports:
+      - "3000:3000"
+    env_file:
+      - .env
+    volumes:
+      - /var/log/ai-server:/var/log/ai-server
+    networks:
+      - talktobook-ai-network
+
+  server-redis:
+    image: "redis:latest"
+    restart: always
+    container_name: "talktobook-redis"
+    ports:
+      - "${REDIS_PORT}:6379"
+    networks:
+      - talktobook-ai-network
+
+networks:
+  talktobook-ai-network:
+    driver: bridge
