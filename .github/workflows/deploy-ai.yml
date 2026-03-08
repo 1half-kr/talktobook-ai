@@ -46,7 +46,7 @@ jobs:
             --document-name "AWS-RunShellScript" \
             --parameters 'commands=[
               "cd /opt/deploy",
-              "aws s3 cp s3://talktobook-deploy/docker-compose.ai.prod.yml .",
+              "aws s3 cp s3://talktobook-deploy/docker-compose.prod.yml .",
               "aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin ${{ secrets.ECR_REGISTRY }}",
               "cat > .env << EOF",
               "ECR_REGISTRY=${{ secrets.ECR_REGISTRY }}",
@@ -68,9 +68,9 @@ jobs:
               "SQS_QUEUE_URL_INTERVIEW_META=${{ secrets.SQS_QUEUE_URL_INTERVIEW_META }}",
               "SQS_QUEUE_URL_AI_PERSISTENCE=${{ secrets.SQS_QUEUE_URL_AI_PERSISTENCE }}",
               "EOF",
-              "docker-compose -f docker-compose.ai.prod.yml pull",
-              "docker-compose -f docker-compose.ai.prod.yml down",
-              "docker-compose -f docker-compose.ai.prod.yml up -d",
+              "docker-compose -f docker-compose.prod.yml pull",
+              "docker-compose -f docker-compose.prod.yml down",
+              "docker-compose -f docker-compose.prod.yml up -d",
               "docker image prune -f"
             ]' \
             --instance-ids ${{ secrets.AI_INSTANCE_ID }} \
