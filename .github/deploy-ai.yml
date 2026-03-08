@@ -3,16 +3,8 @@ name: Deploy AI
 on:
   push:
     branches: [main]
-    paths:
-      - 'ai/**'
-      - 'deploy/ai/docker-compose.ai.prod.yml'
-      - '.github/workflows/deploy-ai.yml'
   pull_request:
     branches: [main]
-    paths:
-      - 'ai/**'
-      - 'deploy/ai/docker-compose.ai.prod.yml'
-      - '.github/workflows/deploy-ai.yml'
   workflow_dispatch:
 
 env:
