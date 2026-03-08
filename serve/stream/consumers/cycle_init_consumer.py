@@ -1,6 +1,5 @@
 import json
-import os
-import pika
+from stream.sqs_client import get_sqs_client, get_queue_url, QueueUrl
 from ..dto import CycleInitMessage
 from session_manager import SessionManager
 from logs import get_logger
@@ -9,52 +8,46 @@ logger = get_logger()
 
 _session_manager = SessionManager()
 
+_WAIT_TIME_SECONDS = 20
+_VISIBILITY_TIMEOUT = 30
+
 
 class CycleInitConsumer:
-    """autobiography.trigger.cycle.init.queue 소비.
+    """autobiography.cycle.init 큐 소비.
 
-    Spring Boot CycleInitPublisher가 발행하는 CycleInitMessage를 수신하여
+    SpringBoot CycleInitPublisher가 발행하는 CycleInitMessage를 수신하여
     Redis에 cycle 정보를 저장한다.
     """
 
     def __init__(self):
         logger.info("[CYCLE_INIT_CONSUMER] Initializing")
-        self.setup_connection()
-        logger.info("[CYCLE_INIT_CONSUMER] Initialization complete")
-
-    def setup_connection(self):
-        rabbitmq_host = os.environ.get("RABBITMQ_HOST")
-        rabbitmq_port = int(os.environ.get("RABBITMQ_PORT"))
-        rabbitmq_user = os.environ.get("RABBITMQ_USER")
-        rabbitmq_password = os.environ.get("RABBITMQ_PASSWORD")
-
-        logger.info(f"[CYCLE_INIT_CONSUMER] Connecting to RabbitMQ - host={rabbitmq_host} port={rabbitmq_port}")
-
-        credentials = pika.PlainCredentials(rabbitmq_user, rabbitmq_password)
-        self.connection = pika.BlockingConnection(
-            pika.ConnectionParameters(
-                host=rabbitmq_host,
-                port=rabbitmq_port,
-                credentials=credentials,
-            )
-        )
-        self.channel = self.connection.channel()
-        logger.info("[CYCLE_INIT_CONSUMER] RabbitMQ connection established")
+        self.sqs = get_sqs_client()
+        self.queue_url = get_queue_url(QueueUrl.AUTOBIOGRAPHY_CYCLE_INIT)
+        self.running = False
+        logger.info(f"[CYCLE_INIT_CONSUMER] Ready - queue={self.queue_url}")
 
     def start_consuming(self):
-        logger.info("[CYCLE_INIT_CONSUMER] Starting to consume from queue=autobiography.trigger.cycle.init.queue")
-        self.channel.basic_consume(
-            queue='autobiography.trigger.cycle.init.queue',
-            on_message_callback=self.on_message,
-            auto_ack=False,
-        )
-        self.channel.start_consuming()
+        self.running = True
+        logger.info("[CYCLE_INIT_CONSUMER] Starting polling loop")
+        while self.running:
+            try:
+                response = self.sqs.receive_message(
+                    QueueUrl=self.queue_url,
+                    MaxNumberOfMessages=1,
+                    WaitTimeSeconds=_WAIT_TIME_SECONDS,
+                    VisibilityTimeout=_VISIBILITY_TIMEOUT,
+                )
+                for message in response.get("Messages", []):
+                    self._process(message)
+            except Exception as e:
+                logger.error(f"[CYCLE_INIT_CONSUMER] Polling error: {e}", exc_info=True)
 
-    def on_message(self, channel, method, properties, body):
+    def _process(self, message: dict):
+        receipt_handle = message["ReceiptHandle"]
         try:
-            logger.info(f"[CYCLE_INIT_CONSUMER] Message received - delivery_tag={method.delivery_tag}")
+            logger.info(f"[CYCLE_INIT_CONSUMER] Message received - message_id={message['MessageId']}")
 
-            payload_data = json.loads(body)
+            payload_data = json.loads(message["Body"])
             msg = CycleInitMessage(**payload_data)
 
             logger.info(
@@ -69,19 +62,22 @@ class CycleInitConsumer:
                 user_id=msg.userId,
             )
 
-            channel.basic_ack(delivery_tag=method.delivery_tag)
+            self._delete(receipt_handle)
             logger.info(f"[CYCLE_INIT_CONSUMER] Cycle initialized - cycle_id={msg.cycleId}")
 
         except json.JSONDecodeError as e:
             logger.error(f"[CYCLE_INIT_CONSUMER] JSON decode error: {e}", exc_info=True)
-            channel.basic_nack(delivery_tag=method.delivery_tag, requeue=False)
+            self._delete(receipt_handle)
         except Exception as e:
             logger.error(f"[CYCLE_INIT_CONSUMER] Processing error: {e}", exc_info=True)
-            channel.basic_nack(delivery_tag=method.delivery_tag, requeue=False)
+            # 삭제하지 않음 → DLQ로 이동
 
-    def close(self):
-        logger.info("[CYCLE_INIT_CONSUMER] Closing connection")
-        self.connection.close()
+    def _delete(self, receipt_handle: str):
+        self.sqs.delete_message(QueueUrl=self.queue_url, ReceiptHandle=receipt_handle)
+
+    def stop(self):
+        self.running = False
+        logger.info("[CYCLE_INIT_CONSUMER] Stopped")
 
 
 if __name__ == "__main__":
@@ -89,4 +85,4 @@ if __name__ == "__main__":
     try:
         consumer.start_consuming()
     except KeyboardInterrupt:
-        consumer.close()
+        consumer.stop()

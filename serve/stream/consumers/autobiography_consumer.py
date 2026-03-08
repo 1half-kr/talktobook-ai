@@ -1,56 +1,49 @@
 import json
-import os
-import pika
+from stream.sqs_client import get_sqs_client, get_queue_url, QueueUrl
 from ..dto import InterviewAnswersPayload
 from autobiographies.generate_autobiography.router import generate_autobiography_fn
 from logs import get_logger
 
 logger = get_logger()
 
+_WAIT_TIME_SECONDS = 20   # long polling
+_VISIBILITY_TIMEOUT = 300  # 5분 (AI 생성 처리 시간 여유)
+
 
 class AutobiographyConsumer:
     def __init__(self):
-        logger.info("[AUTOBIOGRAPHY_CONSUMER] Initializing autobiography consumer")
-        self.setup_connection()
-        logger.info("[AUTOBIOGRAPHY_CONSUMER] Initialization complete")
-
-    def setup_connection(self):
-        rabbitmq_host = os.environ.get("RABBITMQ_HOST")
-        rabbitmq_port = int(os.environ.get("RABBITMQ_PORT"))
-        rabbitmq_user = os.environ.get("RABBITMQ_USER")
-        rabbitmq_password = os.environ.get("RABBITMQ_PASSWORD")
-
-        logger.info(f"[AUTOBIOGRAPHY_CONSUMER] Connecting to RabbitMQ - host={rabbitmq_host} port={rabbitmq_port}")
-
-        credentials = pika.PlainCredentials(rabbitmq_user, rabbitmq_password)
-        self.connection = pika.BlockingConnection(
-            pika.ConnectionParameters(
-                host=rabbitmq_host,
-                port=rabbitmq_port,
-                credentials=credentials,
-            )
-        )
-        self.channel = self.connection.channel()
-        logger.info("[AUTOBIOGRAPHY_CONSUMER] RabbitMQ connection established")
+        logger.info("[AUTOBIOGRAPHY_CONSUMER] Initializing")
+        self.sqs = get_sqs_client()
+        self.queue_url = get_queue_url(QueueUrl.AUTOBIOGRAPHY_TRIGGER)
+        self.running = False
+        logger.info(f"[AUTOBIOGRAPHY_CONSUMER] Ready - queue={self.queue_url}")
 
     def start_consuming(self):
-        logger.info("[AUTOBIOGRAPHY_CONSUMER] Starting to consume from queue=autobiography.trigger.queue")
-        self.channel.basic_consume(
-            queue='autobiography.trigger.queue',
-            on_message_callback=self.on_message,
-            auto_ack=False,
-        )
-        self.channel.start_consuming()
+        self.running = True
+        logger.info("[AUTOBIOGRAPHY_CONSUMER] Starting polling loop")
+        while self.running:
+            try:
+                response = self.sqs.receive_message(
+                    QueueUrl=self.queue_url,
+                    MaxNumberOfMessages=1,
+                    WaitTimeSeconds=_WAIT_TIME_SECONDS,
+                    VisibilityTimeout=_VISIBILITY_TIMEOUT,
+                )
+                for message in response.get("Messages", []):
+                    self._process(message)
+            except Exception as e:
+                logger.error(f"[AUTOBIOGRAPHY_CONSUMER] Polling error: {e}", exc_info=True)
 
-    def on_message(self, channel, method, properties, body):
+    def _process(self, message: dict):
+        receipt_handle = message["ReceiptHandle"]
         try:
-            logger.info(f"[AUTOBIOGRAPHY_CONSUMER] Message received - delivery_tag={method.delivery_tag}")
+            logger.info(f"[AUTOBIOGRAPHY_CONSUMER] Message received - message_id={message['MessageId']}")
 
-            payload_data = json.loads(body)
+            payload_data = json.loads(message["Body"])
 
             if payload_data.get("action") == "merge":
-                logger.warning("[AUTOBIOGRAPHY_CONSUMER] Merge message received, rejecting")
-                channel.basic_nack(delivery_tag=method.delivery_tag, requeue=False)
+                logger.warning("[AUTOBIOGRAPHY_CONSUMER] Merge message received, discarding")
+                self._delete(receipt_handle)
                 return
 
             cycle_id = payload_data.get("cycleId")
@@ -58,7 +51,8 @@ class AutobiographyConsumer:
 
             if not cycle_id:
                 logger.warning("[AUTOBIOGRAPHY_CONSUMER] Message rejected - cycleId missing")
-                channel.basic_nack(delivery_tag=method.delivery_tag, requeue=False)
+                # 삭제하지 않으면 visibility timeout 후 DLQ로 이동하므로 명시적 삭제
+                self._delete(receipt_handle)
                 return
 
             payload = InterviewAnswersPayload(**payload_data)
@@ -67,13 +61,11 @@ class AutobiographyConsumer:
                 f"user_id={payload.userId} cycle_id={cycle_id} step={step} answers_count={len(payload.answers)}"
             )
 
-            # generate_autobiography_fn: 자서전 생성 + cycle 완료 여부(isLast) 판단까지 수행
             result = generate_autobiography_fn(payload)
 
             from stream import publish_generated_autobiography, publish_cycle_merge
             publish_generated_autobiography(result)
 
-            # 모든 챕터 생성 완료 시 Spring Boot merge consumer로 신호 전송
             if result.isLast:
                 logger.info(
                     f"[AUTOBIOGRAPHY_CONSUMER] All chapters done, publishing merge signal - "
@@ -81,7 +73,7 @@ class AutobiographyConsumer:
                 )
                 publish_cycle_merge(result)
 
-            channel.basic_ack(delivery_tag=method.delivery_tag)
+            self._delete(receipt_handle)
             logger.info(
                 f"[AUTOBIOGRAPHY_CONSUMER] Message processed successfully - "
                 f"autobiography_id={payload.autobiographyId} cycle_id={cycle_id} is_last={result.isLast}"
@@ -89,14 +81,18 @@ class AutobiographyConsumer:
 
         except json.JSONDecodeError as e:
             logger.error(f"[AUTOBIOGRAPHY_CONSUMER] JSON decode error: {e}", exc_info=True)
-            channel.basic_nack(delivery_tag=method.delivery_tag, requeue=False)
+            # 파싱 불가 메시지는 즉시 삭제 (DLQ 불필요)
+            self._delete(receipt_handle)
         except Exception as e:
             logger.error(f"[AUTOBIOGRAPHY_CONSUMER] Processing error: {e}", exc_info=True)
-            channel.basic_nack(delivery_tag=method.delivery_tag, requeue=False)
+            # 삭제하지 않음 → visibility timeout 만료 후 DLQ로 이동
 
-    def close(self):
-        logger.info("[AUTOBIOGRAPHY_CONSUMER] Closing connection")
-        self.connection.close()
+    def _delete(self, receipt_handle: str):
+        self.sqs.delete_message(QueueUrl=self.queue_url, ReceiptHandle=receipt_handle)
+
+    def stop(self):
+        self.running = False
+        logger.info("[AUTOBIOGRAPHY_CONSUMER] Stopped")
 
 
 if __name__ == "__main__":
@@ -104,4 +100,4 @@ if __name__ == "__main__":
     try:
         consumer.start_consuming()
     except KeyboardInterrupt:
-        consumer.close()
+        consumer.stop()
