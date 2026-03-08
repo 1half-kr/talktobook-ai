@@ -30,6 +30,13 @@ logger = get_logger()
 logging.getLogger("flowinvoker").setLevel(logging.WARNING)
 logging.getLogger("execution.flow").setLevel(logging.WARNING)
 
+# /health 헬스체크 요청은 access log에서 제외
+class _HealthCheckFilter(logging.Filter):
+    def filter(self, record: logging.LogRecord) -> bool:
+        return "/health" not in record.getMessage()
+
+logging.getLogger("uvicorn.access").addFilter(_HealthCheckFilter())
+
 
 def create_connection():
     api_key = os.environ.get("AZURE_OPENAI_API_KEY")
