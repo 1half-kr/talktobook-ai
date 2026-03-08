@@ -6,7 +6,7 @@ WORKDIR /app/serve/
 # Promptflow 구버전 흔적 제거
 RUN pip uninstall -y promptflow promptflow-core promptflow-devkit promptflow-azure || true
 
-COPY ai/requirements.txt requirements.txt
+COPY requirements.txt requirements.txt
 
 # Promptflow 1.7.x는 marshmallow 3.19.0 필요
 RUN pip install --no-cache-dir --upgrade --no-deps marshmallow==3.19.0
