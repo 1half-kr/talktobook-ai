@@ -7,8 +7,6 @@ services:
       - "3000:3000"
     env_file:
       - .env
-    volumes:
-      - /var/log/ai-server:/var/log/ai-server
     networks:
       - talktobook-ai-network
 
