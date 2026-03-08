@@ -14,11 +14,17 @@ services:
     image: "redis:latest"
     restart: always
     container_name: "talktobook-redis"
+    command: redis-server --appendonly yes
     ports:
       - "${REDIS_PORT}:6379"
+    volumes:
+      - redis_data:/data
     networks:
       - talktobook-ai-network
 
 networks:
   talktobook-ai-network:
     driver: bridge
+
+volumes:
+  redis_data:

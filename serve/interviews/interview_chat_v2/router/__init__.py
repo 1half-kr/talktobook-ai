@@ -158,8 +158,9 @@ async def interview_chat(http_request: Request, autobiography_id: int, request: 
         # 세션 로드
         session_data = session_manager.load_session(session_key)
         if not session_data:
-            logger.error(f"[ERROR] Session not found session_key={session_key}")
-            raise HTTPException(status_code=404, detail="세션을 찾을 수 없습니다")
+            logger.warning(f"[SESSION] Session not found, recreating session_key={session_key}")
+            session_manager.create_session(session_key, user_id, autobiography_id)
+            session_data = session_manager.load_session(session_key)
         
         # 다음 질문 생성
         logger.info(f"[FLOW] Executing flow for next question session_key={session_key}")
@@ -249,8 +250,8 @@ async def end_session(http_request: Request, autobiography_id: int, request: Ses
         # 세션 로드
         session_data = session_manager.load_session(session_key)
         if not session_data:
-            logger.error(f"[ERROR] Session not found for end session_key={session_key}")
-            raise HTTPException(status_code=404, detail="세션을 찾을 수 없습니다")
+            logger.warning(f"[SESSION] Session not found on end, returning empty metrics session_key={session_key}")
+            return SessionEndResponseDto(session_id=session_key, final_metrics=None, pool_to_save=[])
         
         # 최종 메트릭 준비
         metrics_data = session_data.get("metrics")
