@@ -47,7 +47,6 @@ jobs:
       - name: Upload Docker Compose to S3
         run: |
           aws s3 cp deploy/ai/docker-compose.ai.prod.yml s3://talktobook-deploy/
-          aws s3 cp deploy/ai/promtail-config.yml s3://talktobook-deploy/ai-promtail-config.yml
 
       - name: Deploy to EC2 via SSM
         run: |
@@ -56,7 +55,6 @@ jobs:
             --parameters 'commands=[
               "cd /opt/deploy",
               "aws s3 cp s3://talktobook-deploy/docker-compose.ai.prod.yml .",
-              "aws s3 cp s3://talktobook-deploy/ai-promtail-config.yml ./promtail-config.yml",
               "aws ecr get-login-password --region ap-northeast-2 | docker login --username AWS --password-stdin ${{ secrets.ECR_REGISTRY }}",
               "cat > .env << EOF",
               "ECR_REGISTRY=${{ secrets.ECR_REGISTRY }}",
@@ -73,10 +71,6 @@ jobs:
               "RABBITMQ_PORT=${{ secrets.RABBITMQ_PORT }}",
               "RABBITMQ_USER=${{ secrets.RABBITMQ_DEFAULT_USER }}",
               "RABBITMQ_PASSWORD=${{ secrets.RABBITMQ_DEFAULT_PASS }}",
-              "EOF",
-              "cat > .env.promtail << EOF",
-              "LOKI_URL=${{ secrets.LOKI_URL }}",
-              "PROMTAIL_PORT=9080",
               "EOF",
               "docker-compose -f docker-compose.ai.prod.yml pull",
               "docker-compose -f docker-compose.ai.prod.yml down",
