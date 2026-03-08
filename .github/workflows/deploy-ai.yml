@@ -33,12 +33,12 @@ jobs:
 
       - name: Build and push Docker image
         run: |
-          docker build -f ai/deploy/Dockerfile -t ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY_AI }}:${{ github.sha }} .
+          docker build -f deploy/Dockerfile -t ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY_AI }}:${{ github.sha }} .
           docker push ${{ secrets.ECR_REGISTRY }}/${{ secrets.ECR_REPOSITORY_AI }}:${{ github.sha }}
 
       - name: Upload Docker Compose to S3
         run: |
-          aws s3 cp deploy/ai/docker-compose.ai.prod.yml s3://talktobook-deploy/
+          aws s3 cp ai/docker-compose.ai.prod.yml s3://talktobook-deploy/
 
       - name: Deploy to EC2 via SSM
         run: |
