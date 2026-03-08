@@ -30,12 +30,30 @@ logger = get_logger()
 logging.getLogger("flowinvoker").setLevel(logging.WARNING)
 logging.getLogger("execution.flow").setLevel(logging.WARNING)
 
-# /health 헬스체크 요청은 access log에서 제외
-class _HealthCheckFilter(logging.Filter):
+# uvicorn access log 필터
+# - /health 헬스체크 요청 제외
+# - 5xx → ERROR, 4xx → WARNING으로 레벨 조정 (uvicorn 기본값은 전부 INFO)
+# record.args 구조: (client, method, path, http_version, status_code)
+class _AccessLogFilter(logging.Filter):
     def filter(self, record: logging.LogRecord) -> bool:
-        return "/health" not in record.getMessage()
+        if not record.args or len(record.args) < 5:
+            return True
 
-logging.getLogger("uvicorn.access").addFilter(_HealthCheckFilter())
+        path, status_code = record.args[2], record.args[4]
+
+        if "/health" in path:
+            return False
+
+        if status_code >= 500:
+            record.levelno = logging.ERROR
+            record.levelname = "ERROR"
+        elif status_code >= 400:
+            record.levelno = logging.WARNING
+            record.levelname = "WARNING"
+
+        return True
+
+logging.getLogger("uvicorn.access").addFilter(_AccessLogFilter())
 
 
 def create_connection():
