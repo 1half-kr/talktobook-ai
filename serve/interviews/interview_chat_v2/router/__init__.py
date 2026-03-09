@@ -104,7 +104,7 @@ async def start_session(http_request: Request, autobiography_id: int, request: S
         first_question_text = first_question.get("text") if isinstance(first_question, dict) else first_question
                 
         material = first_question.get("material", {})
-        full_material_id = material.get("full_material_id", [])
+        full_material_id = material.get("full_material_id", []) if isinstance(material, dict) else []
         question = InterviewQuestion(
             questionText=first_question_text,
             questionOrder=0, # 질문 순서 정보가 없으므로 0으로 설정
@@ -227,7 +227,7 @@ async def interview_chat(http_request: Request, autobiography_id: int, request: 
         
         # flow 실행 후 metrics 로드
         material = next_question.get("material", {})
-        full_material_id = material.get("full_material_id", [])
+        full_material_id = material.get("full_material_id", []) if isinstance(material, dict) else []
         
         logger.debug(f"[DEBUG] Flow result session_key={session_key} material_id={full_material_id}")
         next_question_text = next_question.get("text") if isinstance(next_question, dict) else next_question
