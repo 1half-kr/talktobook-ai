@@ -158,10 +158,49 @@ async def interview_chat(http_request: Request, autobiography_id: int, request: 
         # 세션 로드
         session_data = session_manager.load_session(session_key)
         if not session_data:
-            logger.warning(f"[SESSION] Session not found, recreating session_key={session_key}")
+            logger.warning(f"[SESSION] Session not found, running init flow session_key={session_key}")
             session_manager.create_session(session_key, user_id, autobiography_id)
-            session_data = session_manager.load_session(session_key)
-        
+
+            # init api와 동일하게 첫 질문 생성
+            logger.info(f"[FLOW] Executing init flow for first question session_key={session_key}")
+            result = flow(
+                sessionId=session_key,
+                answer_text="",
+                user_id=user_id,
+                autobiography_id=autobiography_id
+            )
+            first_question = result.get("next_question")
+
+            if first_question:
+                session_data = session_manager.load_session(session_key)
+                if session_data:
+                    metrics = session_data.get("metrics", {})
+                    metrics["asked_total"] = metrics.get("asked_total", 0) + 1
+                    session_manager.save_session(session_key, metrics, first_question)
+
+                first_question_text = first_question.get("text") if isinstance(first_question, dict) else first_question
+                material = first_question.get("material", {}) if isinstance(first_question, dict) else {}
+                full_material_id = material.get("full_material_id", []) if isinstance(material, dict) else []
+
+                ai_conversation = Conversation(
+                    content=first_question_text,
+                    conversationType="BOT",
+                    materials=json.dumps(full_material_id)
+                )
+                payload = InterviewPayload(
+                    autobiographyId=autobiography_id,
+                    userId=user_id,
+                    conversation=[ai_conversation],
+                    interviewQuestion=InterviewQuestion(
+                        questionText=first_question_text,
+                        questionOrder=0,
+                        materials=json.dumps(full_material_id)
+                    )
+                )
+                publish_persistence_message(payload)
+
+            return InterviewChatV2ResponseDto(next_question=first_question, last_answer_materials_id=[])
+
         # 다음 질문 생성
         logger.info(f"[FLOW] Executing flow for next question session_key={session_key}")
         result = flow(
@@ -176,7 +215,8 @@ async def interview_chat(http_request: Request, autobiography_id: int, request: 
         
         if next_question:
             material_info = next_question.get('material', {})
-            logger.info(f"[QUESTION] Generated next question type={next_question.get('type')} material={material_info.get('material_name', 'N/A')} session_key={session_key}")
+            material_name = material_info.get('material_name', 'N/A') if isinstance(material_info, dict) else material_info
+            logger.info(f"[QUESTION] Generated next question type={next_question.get('type')} material={material_name} session_key={session_key}")
             if last_answer_materials_id:
                 logger.info(f"[MATERIAL] Matched materials from answer: {last_answer_materials_id}")
         else:
