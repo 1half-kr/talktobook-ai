@@ -349,12 +349,21 @@ def interview_engine(sessionId: str, answer_text: str, user_id: int, autobiograp
             return {"next_question": next_question, "last_answer_materials_id": []}
         else:
             # preferred_categories가 없으면 자유 질문
-            metrics = {"preferred_categories": preferred_categories}
-            result = generate_first_question(engine, metrics)
+            metrics_data = session_data.get("metrics", {"preferred_categories": preferred_categories}) if session_data else {"preferred_categories": preferred_categories}
+            result = generate_first_question(engine, metrics_data)
             if result.get("next_question") and "material_id" in result["next_question"]:
                 material_id = result["next_question"].pop("material_id")
                 if isinstance(result["next_question"].get("material"), dict):
                     result["next_question"]["material"]["full_material_id"] = material_id
+            next_question = result.get("next_question")
+            if next_question:
+                session_update = {
+                    "metrics": metrics_data,
+                    "last_question": next_question,
+                    "updated_at": time.time()
+                }
+                redis_client.setex(session_key, 3600, json.dumps(session_update))
+                logger.info(f"[SESSION] Saved first question to Redis session_key={sessionId}")
             result["last_answer_materials_id"] = []
             return result
 
