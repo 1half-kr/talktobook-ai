@@ -353,7 +353,8 @@ def interview_engine(sessionId: str, answer_text: str, user_id: int, autobiograp
             result = generate_first_question(engine, metrics)
             if result.get("next_question") and "material_id" in result["next_question"]:
                 material_id = result["next_question"].pop("material_id")
-                result["next_question"]["material"]["full_material_id"] = material_id
+                if isinstance(result["next_question"].get("material"), dict):
+                    result["next_question"]["material"]["full_material_id"] = material_id
             result["last_answer_materials_id"] = []
             return result
 
