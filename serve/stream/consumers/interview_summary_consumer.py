@@ -58,7 +58,9 @@ class InterviewSummaryConsumer:
         try:
             logger.info(f"[SUMMARY_CONSUMER] Message received - message_id={message['MessageId']}")
 
-            payload_data = json.loads(message["Body"])
+            raw_body = message["Body"]
+            logger.debug(f"[SUMMARY_CONSUMER] Raw body repr={repr(raw_body[:200])}")
+            payload_data = json.loads(raw_body)
             request_dto = InterviewSummaryRequestDto(**payload_data)
 
             logger.info(
